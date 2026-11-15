@@ -1,0 +1,4 @@
+build/
+Binaries/
+*.zip
+.vs/
