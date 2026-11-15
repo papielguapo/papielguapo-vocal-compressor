@@ -1,20 +1,9 @@
-PARAM 0 | Power | 1 | On
+PARAM 0 | Gate (dB, -80 = off) | 0 | -80.0000000
+PARAM 1 | Comp (dB) | 0.666667 | -12.0000000
+PARAM 2 | Gain (dB) | 0.916667 | -3.0000000
+PARAM 3 | Power | 1 | On
   0 = Off
   1 = On
-PARAM 1 | Gate (dB, -96 = off) | 0 | -96.0000000
-PARAM 2 | Comp (dB) | 0.666667 | -12.0000000
-PARAM 3 | Gain (dB) | 0.916667 | -3.0000000
-PARAM 4 | Release (ms, 1200 = auto) | 0.454545 | 600.0000000
-PARAM 5 | SC HPF (Hz, 0 = off) | 0 | 0.0000000
-PARAM 6 | External sidechain auto | 1 | On
-  0 = Off
-  1 = On
-PARAM 7 | Meter Output | 0 | Off
-  0 = Off
-  1 = On
-PARAM 8 | Bypass | 0 | Off
-  0 = Off
-  1 = On
-PARAM 9 | FIX level match / LIM | 0 | Off
+PARAM 4 | Bypass | 0 | Off
   0 = Off
   1 = On

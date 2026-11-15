@@ -1,0 +1,24 @@
+[
+  {
+    "signal": "voice excerpt (previous FET test render)",
+    "gate": -80,
+    "comp": -12,
+    "gain": -3,
+    "sample_rate": 44100,
+    "level_error_db": 0.06777635295296,
+    "null_db": -30.779611472896097,
+    "window10ms_median_abs_db": 0.10465197265148163,
+    "window10ms_p95_abs_db": 0.25958648324012756
+  },
+  {
+    "signal": "voice excerpt (previous FET test render)",
+    "gate": -40,
+    "comp": -24,
+    "gain": -6,
+    "sample_rate": 44100,
+    "level_error_db": 0.3520042161983453,
+    "null_db": -21.806328677539536,
+    "window10ms_median_abs_db": 0.3658900260925293,
+    "window10ms_p95_abs_db": 1.0092060565948486
+  }
+]

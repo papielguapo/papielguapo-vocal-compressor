@@ -1,0 +1,72 @@
+[
+  {
+    "signal": "holdout",
+    "gate": -80,
+    "comp": -12,
+    "gain": -3,
+    "level_error_db": -0.001004830416334812,
+    "null_db": -42.995743596416354,
+    "window10ms_median_abs_db": 0.023663751780986786,
+    "window10ms_p95_abs_db": 0.07840731739997864
+  },
+  {
+    "signal": "holdout",
+    "gate": -40,
+    "comp": -24,
+    "gain": -6,
+    "level_error_db": 0.06771167127725519,
+    "null_db": -29.663432347390025,
+    "window10ms_median_abs_db": 0.11961788684129715,
+    "window10ms_p95_abs_db": 0.33740487694740295
+  },
+  {
+    "signal": "holdout",
+    "gate": -30,
+    "comp": -6,
+    "gain": -12,
+    "level_error_db": -0.005948815489823289,
+    "null_db": -55.63066340663025,
+    "window10ms_median_abs_db": 0.0061464677564799786,
+    "window10ms_p95_abs_db": 0.025064509361982346
+  },
+  {
+    "signal": "limiter",
+    "gate": -80,
+    "comp": 0,
+    "gain": 0,
+    "level_error_db": 2.0000128384545235e-06,
+    "null_db": -132.67032151419838,
+    "window10ms_median_abs_db": 2.070877144433325e-06,
+    "window10ms_p95_abs_db": 2.070877144433325e-06
+  },
+  {
+    "signal": "limiter",
+    "gate": -80,
+    "comp": -24,
+    "gain": -6,
+    "level_error_db": -0.003851226752651371,
+    "null_db": -33.268144132332054,
+    "window10ms_median_abs_db": 0.06867049634456635,
+    "window10ms_p95_abs_db": 0.2902217507362366
+  },
+  {
+    "signal": "rate44100",
+    "gate": -80,
+    "comp": -18,
+    "gain": -3,
+    "level_error_db": -0.011521817037648319,
+    "null_db": -57.3569604711268,
+    "window10ms_median_abs_db": 0.011510571464896202,
+    "window10ms_p95_abs_db": 0.011972224339842796
+  },
+  {
+    "signal": "rate96000",
+    "gate": -80,
+    "comp": -18,
+    "gain": -3,
+    "level_error_db": -0.002241454034283663,
+    "null_db": -71.34142297414144,
+    "window10ms_median_abs_db": 0.002235282212495804,
+    "window10ms_p95_abs_db": 0.0024533006362617016
+  }
+]

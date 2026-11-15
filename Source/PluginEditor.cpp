@@ -104,8 +104,8 @@ void FET67LookAndFeel::drawToggleButton(juce::Graphics& g, juce::ToggleButton& b
 FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
 {
     setLookAndFeel(&look);
-    const char* ids[]{"gate","comp","gain","release","hpf"};
-    const char* names[]{"Gate","Comp","Gain","Release","SC HPF"};
+    const char* ids[]{"gate","comp","gain"};
+    const char* names[]{"Gate","Comp","Gain"};
     for(size_t i=0;i<knobs.size();++i)
     {
         auto& s=knobs[i];s.inverted=i==1;addAndMakeVisible(s);s.setName(names[i]);s.setTitle(names[i]);
@@ -117,7 +117,7 @@ FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
         s.onValueEntry=[this,i]{beginValueEntry(i);};
         s.textFromValueFunction=[i](double v)
         {
-            if(i==0 && v<=-95.9) return juce::String("OFF");
+            if(i==0 && v<=-79.99) return juce::String("OFF");
             if(i==4) return v<1 ? juce::String("OFF") : juce::String(v,0)+" Hz";
             if(i==3) return v>=1199 ? juce::String("AUTO") : juce::String(v,0)+" ms";
             return juce::String(v,1)+" dB";
@@ -132,9 +132,9 @@ FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
     valueEntry.onReturnKey=[this]{commitValueEntry();};
     valueEntry.onEscapeKey=[this]{cancelValueEntry();};
     valueEntry.onFocusLost=[this]{cancelValueEntry();};
-    const char* switchIds[]{"power","scAuto","meterMode","fix"};
-    const char* tips[]{"Power: on / off", "SC AUTO: use external sidechain when the host enables it; OFF uses the internal detector", "Meter: total gain reduction / output (0 = -18 dBFS RMS)", "FIX: adaptive RMS level match with safety ceiling. LIM: automatic makeup with safety ceiling."};
-    for(size_t i=0;i<switches.size();++i) {auto& b=switches[i];addAndMakeVisible(b);b.setName(switchIds[i]);b.setTitle(tips[i]);b.setTooltip(tips[i]);b.setClickingTogglesState(true);if(i<2)b.getProperties().set("reverse",true);switchAttachments[i]=std::make_unique<BA>(processor.apvts,switchIds[i],b);}
+    const char* switchIds[]{"power"};
+    const char* tips[]{"Power: on / off"};
+    for(size_t i=0;i<switches.size();++i) {auto& b=switches[i];addAndMakeVisible(b);b.setName(switchIds[i]);b.setTitle(tips[i]);b.setTooltip(tips[i]);b.setClickingTogglesState(true);if(i==0)b.getProperties().set("reverse",true);switchAttachments[i]=std::make_unique<BA>(processor.apvts,switchIds[i],b);}
     startTimerHz(60);
 }
 FaceplateComponent::~FaceplateComponent()
@@ -165,7 +165,7 @@ void FaceplateComponent::commitValueEntry()
     const int index=editingKnob;
     auto textValue=valueEntry.getText().trim().replaceCharacter(',','.');
     double value=0;bool valid=false;
-    if(textValue.equalsIgnoreCase("OFF") && (index==0 || index==4)) {value=index==0?-96:0;valid=true;}
+    if(textValue.equalsIgnoreCase("OFF") && (index==0 || index==4)) {value=index==0?-80:0;valid=true;}
     else if(textValue.equalsIgnoreCase("AUTO") && index==3) {value=1200;valid=true;}
     else {
         if(textValue.startsWithChar('+')) textValue=textValue.substring(1);
@@ -179,7 +179,7 @@ void FaceplateComponent::commitValueEntry()
         valueEntry.selectAll();return;
     }
     auto& knob=knobs[static_cast<size_t>(index)];
-    const char* ids[]{"gate","comp","gain","release","hpf"};
+    const char* ids[]{"gate","comp","gain"};
     auto* parameter=processor.apvts.getParameter(ids[index]);
     parameter->beginChangeGesture();
     knob.setValue(juce::jlimit(knob.getMinimum(),knob.getMaximum(),value),juce::sendNotificationSync);
@@ -188,12 +188,10 @@ void FaceplateComponent::commitValueEntry()
 }
 void FaceplateComponent::resized()
 {
-    constexpr int centres[]{374,511,649,787,924};
+    constexpr int centres[]{426,649,872};
     for(size_t i=0;i<knobs.size();++i)knobs[i].setBounds(centres[i]-38,80,76,76);
     switches[0].setBounds(204,137,50,36);
-    switches[1].setBounds(1039,135,50,36);
-    switches[2].setBounds(1169,135,50,36);
-    switches[3].setBounds(1299,135,50,36);
+
 }
 void FaceplateComponent::timerCallback()
 {
@@ -209,7 +207,7 @@ void FaceplateComponent::paintMeter(juce::Graphics& g)
     g.setColour(colour(0xff73777b));g.drawRoundedRectangle(bezel.reduced(1),2,1);
     constexpr float values[]{-21,-18,-16,-14,-12,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,-0.5f,0,0.5f,1,2,3,4,6};
     const char* labels[]{"-21","-18","-16","-14","-12","-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","-.5","0",".5","1","2","3","4","CLIP"};
-    const bool out=processor.apvts.getRawParameterValue("meterMode")->load()>0.5f;
+    const bool out=false;
     const bool powered=processor.apvts.getRawParameterValue("power")->load()>0.5f;
     for(int i=0;i<23;++i)
     {
@@ -264,12 +262,12 @@ void FaceplateComponent::paint(juce::Graphics& g)
     lamp(g,{206,32,60,60},processor.apvts.getRawParameterValue("power")->load()>0.5f);
     g.setColour(colour(0xff171c1f));text(g,"POWER",197,102,78,18,14);
     text(g,"ON",176,145,35,17,11);text(g,"OFF",258,145,35,17,11);
-    constexpr float centres[]{374,511,649,787,924};
-    const char* titles[]{"GATE","COMP","GAIN","RELEASE","SC HPF"};
-    for(int i=0;i<5;++i)
+    constexpr float centres[]{426,649,872};
+    const char* titles[]{"GATE","COMP","GAIN"};
+    for(int i=0;i<3;++i)
     {
         const float cx=centres[i]; constexpr int steps=4;
-        const char* scales[5][5] = {{"OFF","-72","-48","-24","0"},{"0","-9","-18","-27","-36"},{"-36","-27","-18","-9","0"},{".1",".38",".65",".93","AUTO"},{"OFF","55","110","165","220"}};
+        const char* scales[5][5] = {{"OFF","-60","-40","-20","0"},{"0","-9","-18","-27","-36"},{"-36","-27","-18","-9","0"},{".1",".38",".65",".93","AUTO"},{"OFF","55","110","165","220"}};
         for(int tick=0;tick<=steps;++tick) {
             const float a=juce::MathConstants<float>::pi*(7.0f/6.0f+(5.0f/3.0f)*tick/steps);
             const float dx=std::sin(a),dy=-std::cos(a);
@@ -281,16 +279,9 @@ void FaceplateComponent::paint(juce::Graphics& g)
         text(g,titles[i],cx-64,197,128,21,14);
     }
     paintMeter(g);
-    for(int i=0;i<3;++i)
-    {
-        const float cx=1064+130.0f*static_cast<float>(i);
-        const char* lhs[]{"ON","GR","LIM"};const char* rhs[]{"OFF","OUT","FIX"};const char* title[]{"SC / AUTO","METER","FIX / LIM"};
-        g.setColour(colour(0xff1b2225));text(g,lhs[i],cx-44,145,30,15,10);text(g,rhs[i],cx+25,145,35,15,10);text(g,title[i],cx-36,171,82,18,11);
-    }
-    const bool filtering=processor.apvts.getRawParameterValue("scAuto")->load()>0.5f;
-    if(filtering){g.setColour(colour(0xffbc65ff).withAlpha(0.15f));g.fillEllipse(1007,147,10,10);}
-    g.setColour(colour(0xff784a96));g.drawEllipse(1009,149,5,6,0.7f);
-    g.setColour(colour(filtering?0xffd49aff:0xff665470));g.fillEllipse(1010,150,3,4);
+    g.setColour(colour(0xff171c1f));
+    text(g,"TOTAL GAIN REDUCTION",1012,128,360,17,12);
+    text(g,juce::String(shownGr,1)+" dB GR     OUT "+juce::String(shownOut,1)+" dBFS",1012,153,360,17,12);
     // Hand-drawn vector script, independent of installed fonts.
     juce::Path signature;
     signature.startNewSubPath(0,22);signature.lineTo(12,2);signature.cubicTo(25,-3,25,7,13,12);signature.lineTo(7,12);

@@ -1,0 +1,1234 @@
+[
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": 2.0331041679875774e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": 2.0427692650446487e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": 2.0524813421853796e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": 2.4513224251039988e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": 2.0622399423185015e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": 2.0671367806004118e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 2.0720449439386268e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 2.076965047573904e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 2.081896721204564e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 2.086840088264475e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 2.0917951487536156e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 2.024548496624368e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 2.0943588319922145e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": 2.10431612977598e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": 1.9453094741518604e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": 2.114321206105358e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": 2.119341038510291e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": 1.985736392573483e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": 2.0544718351110236e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": 2.059350129384528e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": 2.0642399917248315e-06
+  },
+  {
+    "gate": -80,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": 1.9999945032038948e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": 3.966723610419237e-05
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": 2.0427692650446487e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": 2.0524813421853796e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": 2.4513224251039988e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": 2.0622399423185015e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": 2.0671367806004118e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 2.0720449439386268e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 2.076965047573904e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 2.081896721204564e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 2.086840088264475e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 2.0917951487536156e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.016643002862206147
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 0.005338874564189529
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": 2.10431612977598e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": 1.9453094741518604e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": 2.114321206105358e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": 2.119341038510291e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": 1.985736392573483e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": 2.0544718351110236e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": 2.059350129384528e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": 2.0642399917248315e-06
+  },
+  {
+    "gate": -60,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": 1.9999945032038948e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": 0.0014256291083097716
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -0.0011775033484341371
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": 0.0012948169867173691
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": 2.4513224251039988e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": 2.0622399423185015e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": 2.0671367806004118e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 2.0720449439386268e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 2.076965047573904e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 2.081896721204564e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 2.086840088264475e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 2.0917951487536156e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.016838810825887996
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 0.01695817616272361
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": 0.016745764584728692
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": 0.00533840105672268
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": 2.114321206105358e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": 2.119341038510291e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": 1.985736392573483e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": 2.0544718351110236e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": 2.059350129384528e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": 2.0642399917248315e-06
+  },
+  {
+    "gate": -40,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": 1.9999945032038948e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": 0.0012488126267885245
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -0.0015333768526507722
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": 0.0018325987569040036
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": -0.0015430081668394244
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": -0.0014857063526316793
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": -4.776234884118255e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 0.0011517496897894843
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 2.076965047573904e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 2.081896721204564e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 2.086840088264475e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 2.0917951487536156e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.01572488648518921
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 0.01659342181313312
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": 0.016781688878111073
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": 0.01674333846372468
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": 0.016849395556718244
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": 0.01686527204940943
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": 0.0167046958501156
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": 2.0544718351110236e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": 2.059350129384528e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": 2.0642399917248315e-06
+  },
+  {
+    "gate": -20,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": 1.9999945032038948e-06
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": -0.016006207202357202
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -0.0010983282320172977
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": 0.001925470693312151
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": -0.0015946839611983318
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": -0.001496344631886948
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": -0.00023637546900380483
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 0.0012805759965680075
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 0.0027382445286817394
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": -0.002268269278450266
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": -0.001351272187053147
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": -5.14640334989676e-06
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": -0.007467346074112968
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 0.012275759170189087
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": 0.01565593645626582
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": 0.016367616163797723
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": 0.01663388176940207
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": 0.016744154740453637
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": 0.01681414736870371
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": 0.016850546709285326
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": 0.016865310748560115
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": 0.016778585314057015
+  },
+  {
+    "gate": 0,
+    "comp": 0,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": 0.005383113950507769
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": -7.320809376207216e-06
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -3.0146225081025262e-05
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": -4.370603434715734e-05
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": -3.522988738551433e-05
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": 7.3528021216541725e-06
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": 0.0001200825398110316
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": 0.002042485082208459
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 0.0036030079953238946
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 0.0042954437634917355
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 0.005431845737274477
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 0.00983857486945284
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.07291098867910092
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": -0.0009616119845969946
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": -0.0031786150584339782
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": -0.006070470618934057
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": -0.007897336496465943
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": -0.010540659849102185
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": -0.0126580907376624
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": -0.014123484735774195
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": -0.014940063779618627
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": -0.015382998798028557
+  },
+  {
+    "gate": -80,
+    "comp": -36,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": -0.015583945850411427
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": -4.772374787152569e-06
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -1.1058133321282279e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": -2.0126127161912832e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": -1.8224482072536773e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": -3.184315470185953e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": -5.4203042704809235e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": -5.5203474336856096e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": 6.950273308731343e-05
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": 0.0017601091483819644
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": 0.003350920466293915
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 0.008365977727958438
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.054902389873152505
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": 0.006053485739932082
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": -0.0009008714045941237
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": -0.00205205163303442
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": -0.0030435519201894292
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": -0.005099344732430372
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": -0.0076997657999615925
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": -0.010365351021994894
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": -0.012536819323625428
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": -0.014063062746354408
+  },
+  {
+    "gate": -80,
+    "comp": -24,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": -0.014783648091371804
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -72,
+    "error_db": -4.634103118960239e-06
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -60,
+    "error_db": -6.297879234237006e-06
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -48,
+    "error_db": -4.8062137721433055e-06
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -40,
+    "error_db": -7.470108968118069e-06
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -36,
+    "error_db": -1.4604123576152596e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -30,
+    "error_db": -1.7614589778835288e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -24,
+    "error_db": -2.768131035856758e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -18,
+    "error_db": -4.8688303517148845e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -12,
+    "error_db": -6.118714565499686e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": -6,
+    "error_db": -2.63656378790323e-05
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "dc",
+    "input_db": 0,
+    "error_db": 0.001334144651392841
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -72,
+    "error_db": 0.016832469273441585
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -60,
+    "error_db": -0.004434744418121055
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -48,
+    "error_db": -0.00018956549373617355
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -40,
+    "error_db": -0.0004657082582405621
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -36,
+    "error_db": -0.0007268725674932158
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -30,
+    "error_db": -0.0013780776334317113
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -24,
+    "error_db": -0.002530827054193876
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -18,
+    "error_db": -0.004359437554131415
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -12,
+    "error_db": -0.006825283698119723
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": -6,
+    "error_db": -0.009531129865280727
+  },
+  {
+    "gate": -80,
+    "comp": -12,
+    "signal": "sine",
+    "input_db": 0,
+    "error_db": -0.01180676866974011
+  }
+]

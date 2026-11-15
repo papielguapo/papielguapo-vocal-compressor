@@ -1,1 +1,1 @@
-PASS: mono/stereo at 44.1/48/96 kHz; silence; finite output; sample-peak ceiling; stereo link; gate attenuation; Comp response; latency-aligned bypass; saved parameters; 4097-sample blocks; automation; external sidechain; NaN input.
+PASS: mono/stereo at 44.1/48/96k, silence, finite, bounded, stereo link, gate, comp, bypass, state
