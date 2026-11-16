@@ -55,7 +55,10 @@ void harmonicTests(){
   else require(amplitude[1]/amplitude[0]<.00032,"8x alias suppression");
  }
 }
+#include "AdvancedValidation.h"
 int main(int argc,char**argv){juce::ScopedJuceInitialiser_GUI init;try {
+ if(argc>1&&juce::String(argv[1])=="--advanced"){advancedValidation();return 0;}
+ if(argc>2&&juce::String(argv[1])=="--benchmark"){performanceValidation(argv[2]);return 0;}
  if(argc>6 && juce::String(argv[1])=="--render") {FET67Processor p;set(p,"gate",juce::String(argv[4]).getFloatValue());set(p,"comp",juce::String(argv[5]).getFloatValue());set(p,"gain",juce::String(argv[6]).getFloatValue());if(argc>7)set(p,"lowCut",juce::String(argv[7]).getFloatValue());return renderAudioFile(p,juce::File(juce::String(argv[2])),juce::File(juce::String(argv[3])));}
 
  harmonicTests();

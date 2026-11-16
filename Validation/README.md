@@ -1,3 +1,5 @@
+> Documento histórico del motor anterior a 2.3. Para la versión actual, consultar [auditoría 2.4](2.4/Informe.md).
+
 # Comparación con R-Vox
 
 Implementación independiente ajustada mediante mediciones de R-Vox Stereo instalado (Waves V14). No contiene código, binarios ni gráficos de Waves y no requiere Waves instalado.

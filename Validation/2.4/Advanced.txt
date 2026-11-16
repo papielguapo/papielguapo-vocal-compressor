@@ -1,0 +1,3 @@
+Automation partition maximum error: 0
+Low Cut 1 Hz corner: -3.00799 dB
+PASS advanced: ceiling after FIX/Delta, 5 rates, 6 block sizes, mono/stereo, automation partition, C++ allocation monitor, impulse latency, Low Cut 1 Hz

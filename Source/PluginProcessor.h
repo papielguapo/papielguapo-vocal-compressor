@@ -3,6 +3,7 @@
 #include <array>
 #include <atomic>
 #include "VocalHarmonics.h"
+#include "VocalPeakSafety.h"
 class FET67Processor final : public juce::AudioProcessor {
 public:
  FET67Processor();
@@ -19,7 +20,7 @@ public:
  bool acceptsMidi() const override {return false;}
  bool producesMidi() const override {return false;}
  bool isMidiEffect() const override {return false;}
- double getTailLengthSeconds() const override {return .25;}
+ double getTailLengthSeconds() const override {return .5;}
  int getNumPrograms() override {return 1;}
  int getCurrentProgram() override {return 0;}
  void setCurrentProgram(int) override {}
@@ -38,12 +39,23 @@ private:
  VocalHarmonics harmonics;
  std::array<std::vector<float>,2> cleanDryDelay,cleanWetDelay;
  int cleanPosition=0,cleanLatency=0;
+ VocalPeakSafety peakSafety;
+ VocalRollingPeak detectorPeak;
+ static constexpr int processingCapacity=512;
+ juce::AudioBuffer<float> wetScratch,dryScratch;
+ std::array<float,processingCapacity> colourTargets{},gainValues{},headroomValues{},wetValues{},fixValues{},deltaValues{},cellMeter{},learningValues{};
+ std::vector<float> colourMeterDelay,limiterMeterDelay;
+ int colourMeterPosition=0,limiterMeterPosition=0;
+ struct Coefficients {float base=0,power=1,chargePole=0,memoryReleasePole=0,rippleWeight=0,rippleFast=0,rippleSlow=0;} coefficients;
+ float coefficientComp=100,releaseTauCache=-1;
+ void updateCoefficients(float);
+ void processChunk(juce::AudioBuffer<float>&,int,int,int,float&);
  double rate=48000;
- static constexpr int maximumDelay=512;
+ static constexpr int maximumDelay=1024;
  int delay=64;
  std::array<std::array<float,maximumDelay+1>,2> audioDelay{},filteredDelay{};
- std::array<std::array<float,2>,2> cutState1{},cutState2{};
- std::array<float,maximumDelay> gainHistory{},kernel{},peakHistory{};
+ std::array<std::array<double,2>,2> cutState1{},cutState2{};
+ std::array<float,maximumDelay> gainHistory{},kernel{},reverseKernel{},peakHistory{};
  int audioPosition=0,gainPosition=0,overshootHold=0;
  float overloadMemory=0;
  float memoryGain=1,primaryGain=1,recoveryPole=0,releaseStartGain=1,releaseFraction=0;

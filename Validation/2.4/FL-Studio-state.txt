@@ -1,0 +1,86 @@
+Window: "vocal24-acceptance.flp - FL Studio 2026", App: FL64.exe.
+	0 window (ventana) vocal24-acceptance.flp - FL Studio 2026 Secondary Actions: Raise
+		1 pane (panel) ID: 68282
+			2 pane (panel) Browser ID: 199622
+				3 pane (panel) ID: 790804
+					4 pane (panel) ID: 332198
+				47 pane (panel) ID: 1050238
+				5 pane (panel) ID: 266674
+					6 pane (panel) ID: 266656
+				7 pane (panel) ID: 265156
+				8 pane (panel) ID: 266690
+				9 pane (panel) Browser ID: 461798
+		10 pane (panel) ID: 2426470
+			384 pane (panel) PAPIELGUAPO - VOCAL Compressor (Master) ID: 2821250
+				385 pane (panel)  ID: 1444968
+					386 pane (panel) ID: 2100418
+						387 pane (panel) ID: 789718
+							388 custom (personalizado) PAPIELGUAPO - VOCAL Compressor Secondary Actions: Raise
+								389 custom (personalizado) ID: .<empty>
+								390 custom (personalizado) ID: .<empty>.<empty>
+								391 custom (personalizado) ID: .<empty>.<empty>
+								392 slider (control deslizante) (settable, float) Low Cut Value: 80 ID: Low Cut.<empty>.<empty>.<empty>
+								393 slider (control deslizante) (settable, float) Gate Value: -80 ID: Gate.<empty>.<empty>.<empty>
+								394 slider (control deslizante) (settable, float) Comp Value: -12 ID: Comp.<empty>.<empty>.<empty>
+								395 slider (control deslizante) (settable, float) Gain Value: -3 ID: Gain.<empty>.<empty>.<empty>
+								396 checkbox (casilla) Power: on / off Description: Power: on / off Value: On ID: Power: on / off.<empty>.<empty>.<empty>
+								397 checkbox (casilla) DELTA: hear dry minus processed signal (including FIX) Description: DELTA: hear dry minus processed signal (including FIX) Value: On ID: DELTA: hear dry minus processed signal (including FIX).<empty>.<empty>.<empty>
+								398 checkbox (casilla) GR / OUT: meter gain reduction or output peak; OUT shows dBFS Description: GR / OUT: meter gain reduction or output peak; OUT shows dBFS Value: On ID: GR / OUT: meter gain reduction or output peak; OUT shows dBFS.<empty>.<empty>.<empty>
+								399 checkbox (casilla) FIX: adaptive RMS auto gain, +/-24 dB; holds through silence and closed gate Description: FIX: adaptive RMS auto gain, +/-24 dB; holds through silence and closed gate Value: On ID: FIX: adaptive RMS auto gain, +/-24 dB; holds through silence and closed gate.<empty>.<empty>.<empty>
+				400 pane (panel) PAPIELGUAPO - VOCAL Compressor (Master) ID: 789510
+			401 pane (panel) PAPIELGUAPO - 1167 Compressor (Master) ID: 790196
+				402 pane (panel)  ID: 1705644
+					403 pane (panel) ID: 1707148
+						404 pane (panel) ID: 1313842
+							405 custom (personalizado) PAPIELGUAPO - 1167 Compressor Secondary Actions: Raise
+								406 custom (personalizado) ID: .<empty>
+								407 custom (personalizado) ID: .<empty>.<empty>
+								408 custom (personalizado) ID: .<empty>.<empty>
+								409 slider (control deslizante) (settable, float) Input Value: 6.25 ID: Input.<empty>.<empty>.<empty>
+								410 slider (control deslizante) (settable, float) Output Value: 5 ID: Output.<empty>.<empty>.<empty>
+								411 slider (control deslizante) (settable, float) Attack Value: 3 ID: Attack.<empty>.<empty>.<empty>
+								412 slider (control deslizante) (settable, float) Release Value: 4 ID: Release.<empty>.<empty>.<empty>
+								413 slider (control deslizante) (settable, float) Ratio Value: 0 ID: Ratio.<empty>.<empty>.<empty>
+								414 checkbox (casilla) SC FILTER: 80 Hz high-pass in the detector only; does not cut bass from the audio path. New instances remain stereo-linked. Description: SC FILTER: 80 Hz high-pass in the detector only; does not cut bass from the audio path. New instances remain stereo-linked. Value: Off ID: SC FILTER: 80 Hz high-pass in the detector only; does not cut bass from the audio path. New instances remain stereo-linked..<empty>.<empty>.<empty>
+								415 checkbox (casilla) Meter: gain reduction / output (0 = -18 dBFS RMS) Description: Meter: gain reduction / output (0 = -18 dBFS RMS) Value: Off ID: Meter: gain reduction / output (0 = -18 dBFS RMS).<empty>.<empty>.<empty>
+								416 checkbox (casilla) FIX: RMS output matching to the original input, +/-24 dB; allow a few seconds to settle. Not LUFS or peak limiting. Description: FIX: RMS output matching to the original input, +/-24 dB; allow a few seconds to settle. Not LUFS or peak limiting. Value: Off ID: FIX: RMS output matching to the original input, +/-24 dB; allow a few seconds to settle. Not LUFS or peak limiting..<empty>.<empty>.<empty>
+								417 checkbox (casilla) Power: on / off (latency-aligned dry passthrough) Description: Power: on / off (latency-aligned dry passthrough) Value: On ID: Power: on / off (latency-aligned dry passthrough).<empty>.<empty>.<empty>
+				418 pane (panel) PAPIELGUAPO - 1167 Compressor (Master) ID: 461810
+			41 pane (panel) Mixer - Master ID: 330316
+				42 pane (panel) ID: 658430
+				43 pane (panel) ID: 462000
+				44 pane (panel) Mixer - Master ID: 984204
+				45 pane (panel) ID: 2884292
+					46 pane (panel) ID: 1837378
+			11 pane (panel) Channel rack ID: 1444296
+				12 pane (panel) ID: 1443986
+				13 pane (panel) Channel rack ID: 527212
+				14 pane (panel) ID: 1966856
+					15 pane (panel) ID: 461836
+			16 pane (panel) Playlist - ID: 133782
+				17 pane (panel) (disabled) ID: 527338
+				18 pane (panel) ID: 592942
+				19 pane (panel) ID: 658584
+				20 pane (panel) Playlist - ID: 461992
+				21 pane (panel) ID: 396394
+		22 pane (panel) ID: 133770
+			23 pane (panel) ID: 330280
+				24 pane (panel) Splitter_1 ID: 592940
+				25 pane (panel) ID: 396296
+				26 pane (panel) ID: 658414
+				27 pane (panel) ID: 527230
+				28 pane (panel) ID: 1706124
+				29 pane (panel) ID: 461876
+				30 pane (panel) ID: 527506
+				31 pane (panel) ID: 68286
+			32 pane (panel) ID: 2556108
+				33 pane (panel) ID: 1444988
+				34 pane (panel) ID: 1967772
+				35 pane (panel) ID: 1771952
+					36 pane (panel) ID: 724134
+				37 pane (panel) ID: 3212118
+				38 pane (panel) ID: 1051070
+				39 pane (panel) ID: 2296196
+				40 pane (panel) ID: 1706374
+
+The focused UI element is 384 pane (panel) PAPIELGUAPO - VOCAL Compressor (Master) ID: 2821250.

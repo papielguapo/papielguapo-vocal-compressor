@@ -1,0 +1,1 @@
+PASS: H2/H3, higher-order rejection, DC removal, 8x alias suppression; FIX RMS match and silence, DELTA reconstruction and meter independence; lowcut 24 dB/oct, cutoff, stereo ratio, legacy state, unfiltered bypass;  mono/stereo at 44.1/48/96k, silence, finite, bounded, stereo link, gate, comp, bypass, state
