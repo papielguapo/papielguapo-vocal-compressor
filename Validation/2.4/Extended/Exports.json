@@ -1,0 +1,30 @@
+{
+  "source": "existing local vocal excerpt, looped to 600 seconds, normalized peak .7, R=.37 L; source and rendered voice not distributed",
+  "renders": [
+    {
+      "render": "native",
+      "rate": 44100,
+      "frames": 26482050,
+      "audio_seconds": 600.5,
+      "wall_seconds": 65.98257190000731,
+      "peak_dbfs": -1.4336192568820891
+    },
+    {
+      "render": "installed",
+      "rate": 44100,
+      "frames": 26482050,
+      "audio_seconds": 600.5,
+      "wall_seconds": 71.2340062999865,
+      "peak_dbfs": -1.4336192568820891
+    },
+    {
+      "render": "fix",
+      "rate": 44100,
+      "frames": 26482050,
+      "audio_seconds": 600.5,
+      "wall_seconds": 62.02518810000038,
+      "peak_dbfs": -0.30000014137494
+    }
+  ],
+  "max_sample_difference_native_installed": 0.0
+}

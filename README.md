@@ -56,3 +56,5 @@ ctest --test-dir build -C Release --output-on-failure
 ```
 
 El ejecutable `PapisTests` conserva su nombre interno y ejecuta las pruebas DSP.
+
+[Validación ampliada: 45 minutos de audio simulado y exportaciones de voz de 10 minutos](Validation/2.4/Extended/Informe.md). Para ejecutar la prueba prolongada: `PapisTests.exe --soak C:/ruta/absoluta/Soak.csv`.
