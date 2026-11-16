@@ -31,3 +31,6 @@ Fragmento vocal local repetido hasta 600 segundos, 44,1 kHz, pico de entrada nor
 Reproducción y exportación dentro de FL Studio y un segundo DAW, y sesiones prolongadas en tiempo real con sus dispositivos de audio. El escritorio estaba siendo utilizado por otra prueba, «Vocal Rider Audit 133», y el controlador devolvía solicitudes simultáneas. Se solicitó dejarlo libre antes de intervenir. No se ha modificado ese proyecto ni su diálogo de guardado. Cubase tampoco se cuenta como validado. La comprobación anterior de controles y recuperación de estado en FL Studio sigue documentada en el informe principal.
 
 La protección continúa siendo de pico de muestra, no true peak; no se ha añadido un modo true peak ni se ha certificado ausencia de picos entre muestras.
+
+
+Actualización posterior: se completó una pasada de dos minutos con voz centrada en Ableton Live 12.4.5, controles, guardado/reapertura y exportación. Véase el [informe de Ableton](../Ableton-Live12/Informe.md) para resultados, incidencia de accesibilidad y límites; esto no sustituye las pruebas pendientes de otros DAW o sesiones prolongadas.

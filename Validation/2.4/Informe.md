@@ -35,3 +35,6 @@ Cubase 14 se lanzó, pero no llegó a un proyecto durante la comprobación inici
 ## Alcance
 
 Motor independiente con coloración propia, no clon 1:1 de R-Vox. Mantiene identidad VST3 e IDs. El techo por muestras no garantiza picos entre muestras. Las pruebas no equivalen a certificar todos los DAW, equipos ni sesiones de larga duración.
+
+
+Actualización posterior: se completó una pasada de dos minutos con voz centrada en Ableton Live 12.4.5, controles, guardado/reapertura y exportación. Véase el [informe de Ableton](Ableton-Live12/Informe.md) para resultados, incidencia de accesibilidad y límites; esto no sustituye las pruebas pendientes de otros DAW o sesiones prolongadas.
