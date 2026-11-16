@@ -29,12 +29,15 @@ FET67Processor::FET67Processor():AudioProcessor(BusesProperties().withInput("Inp
 bool FET67Processor::isBusesLayoutSupported(const BusesLayout& l) const {return l.inputBuses.size()==1&&l.outputBuses.size()==1&&(l.getMainInputChannelSet()==juce::AudioChannelSet::mono()||l.getMainInputChannelSet()==juce::AudioChannelSet::stereo())&&l.getMainInputChannelSet()==l.getMainOutputChannelSet();}
 void FET67Processor::prepareToPlay(double sr,int) {
  rate=std::isfinite(sr)?juce::jmax(8000.,sr):48000.;
- delay=64;while(rate>48000.0*(delay/64)&&delay<maximumDelay)delay*=2;setLatencySamples(delay);
+ delay=64;while(rate>48000.0*(delay/64)&&delay<maximumDelay)delay*=2;cleanGain.prepare(rate);harmonics.prepare(rate);cleanLatency=cleanGain.latency();
+ for(auto& c:cleanDryDelay)c.assign(size_t(cleanLatency+1),0);for(auto& c:cleanWetDelay)c.assign(size_t(cleanLatency+1),0);
+ setLatencySamples(delay+cleanLatency+harmonics.latency());
  gatePole=std::exp(-1./(rate*.13));limiterPole=std::exp(-1./(rate*.05));meterPole=std::exp(-1./(rate*.25));
  for(auto* s:{&compression,&gateThreshold,&outputGain,&wet,&cutFrequency,&cutMix,&fixMix,&deltaMix})s->reset(rate,.02);
  matchGain.reset(rate,1.0);kernel.fill(0);float sum=0;for(int i=0;i<delay;++i){kernel[size_t(i)]=std::sin(juce::MathConstants<float>::pi*(i+.5f)/delay);sum+=kernel[size_t(i)];}for(auto& k:kernel)k/=sum;reset();
 }
 void FET67Processor::reset() {
+ cleanPosition=0;for(auto& c:cleanDryDelay)std::fill(c.begin(),c.end(),0.f);for(auto& c:cleanWetDelay)std::fill(c.begin(),c.end(),0.f);cleanGain.reset(-comp->load());harmonics.reset();
  for(auto& c:filteredDelay)c.fill(0);for(auto& c:cutState1)c.fill(0);for(auto& c:cutState2)c.fill(0);
  matchInput=matchOutput=0;matchCounter=0;matchGain.setCurrentAndTargetValue(1);fixMix.setCurrentAndTargetValue(fix->load()>.5f?1.f:0.f);deltaMix.setCurrentAndTargetValue(delta->load()>.5f?1.f:0.f);
  cutFrequency.setCurrentAndTargetValue(juce::jmax(5.f,lowCut->load()));cutMix.setCurrentAndTargetValue(lowCut->load()>0?1.f:0.f);
@@ -110,13 +113,19 @@ void FET67Processor::process(juce::AudioBuffer<float>& b,juce::MidiBuffer& m,boo
   const float reduction=20*std::log10(makeup/juce::jmax(1.e-12f,compGain));
   gainHistory[size_t(gainPosition)]=gateG*compGain;
   float smoothed=0;for(int k=0;k<delay;++k)smoothed+=kernel[size_t(k)]*gainHistory[size_t((gainPosition-k+delay)%delay)];gainPosition=(gainPosition+1)%delay;
+  smoothed=gain(cleanGain.tick(db(juce::jmax(1.e-12f,smoothed))));
   std::array<float,2> dry{};const int read=(audioPosition+1)%(delay+1);float processedPeak=0;
   for(int c=0;c<n;++c){audioDelay[size_t(c)][size_t(audioPosition)]=rawInput[size_t(c)];filteredDelay[size_t(c)][size_t(audioPosition)]=in[size_t(c)];dry[size_t(c)]=audioDelay[size_t(c)][size_t(read)];processedPeak=juce::jmax(processedPeak,std::abs(dry[size_t(c)]*smoothed));}audioPosition=read;
   // Measured R-Vox limiting is part of the rational compression curve.
   // There is no additional hard ceiling at Comp = 0: supernominal input passes through.
-  const float outG=outputGain.getNextValue(),mix=wet.getNextValue();
+  const int cleanRead=(cleanPosition+1)%(cleanLatency+1);std::array<float,2> processedAudio{};
+  for(int c=0;c<n;++c){cleanDryDelay[size_t(c)][size_t(cleanPosition)]=dry[size_t(c)];cleanWetDelay[size_t(c)][size_t(cleanPosition)]=filteredDelay[size_t(c)][size_t(read)];dry[size_t(c)]=cleanDryDelay[size_t(c)][size_t(cleanRead)];processedAudio[size_t(c)]=cleanWetDelay[size_t(c)][size_t(cleanRead)]*smoothed*.99f;}cleanPosition=cleanRead;
+  const float macro=juce::jlimit(0.f,1.f,-compression.getCurrentValue()/36);const float depth=juce::jlimit(0.f,1.f,reduction/18);
+  harmonics.tick(processedAudio,dry,macro*(.35f+.65f*depth));
+  const float colourHeadroom=gain(-3.f*std::sqrt(macro));
+  const float outG=outputGain.getNextValue()*colourHeadroom,mix=wet.getNextValue();
   const float correction=1+fixMix.getNextValue()*(matchGain.getNextValue()-1),audition=deltaMix.getNextValue();double inputEnergy=0,processedEnergy=0;
-  for(int c=0;c<n;++c){const float processed=filteredDelay[size_t(c)][size_t(read)]*smoothed*.99f*outG;inputEnergy+=double(dry[size_t(c)])*dry[size_t(c)];processedEnergy+=double(processed)*processed;
+  for(int c=0;c<n;++c){const float processed=processedAudio[size_t(c)]*outG;inputEnergy+=double(dry[size_t(c)])*dry[size_t(c)];processedEnergy+=double(processed)*processed;
    const float matched=processed*correction;const float listened=matched+audition*(dry[size_t(c)]-2*matched);const float y=dry[size_t(c)]+mix*(listened-dry[size_t(c)]);b.setSample(c,i,y);outPeak=juce::jmax(outPeak,std::abs(y));}
   matchInput=matchPole*matchInput+(1-matchPole)*inputEnergy/n;matchOutput=matchPole*matchOutput+(1-matchPole)*processedEnergy/n;
   if(++matchCounter>=64){matchCounter=0;if(gateG>.5f&&matchInput>1.e-6&&matchOutput>1.e-9){const double correctionDb=juce::jlimit(-24.,24.,10*std::log10(matchInput/matchOutput));matchGain.setTargetValue(gain(float(correctionDb)));}}

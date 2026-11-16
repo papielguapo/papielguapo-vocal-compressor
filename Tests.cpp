@@ -41,9 +41,24 @@ void buttonTests(){
  for(int k=0;k<300;++k){c.clear();matched.processBlock(c,m);}require(c.getMagnitude(0,c.getNumSamples())==0,"FIX silence remains silent");
  juce::MemoryBlock state;matched.getStateInformation(state);FET67Processor restored;restored.setStateInformation(state.getData(),int(state.getSize()));require(restored.apvts.getRawParameterValue("fix")->load()==1,"FIX state saved");
 }
+void harmonicTests(){
+ for(double frequency:{74.,10000.}){
+  VocalHarmonics colour;colour.prepare(48000);std::array<double,7> re{},im{};double dc=0;int count=0;
+  for(int i=0;i<240000;++i){const double phase=juce::MathConstants<double>::twoPi*frequency*i/48000;std::array<float,2> wet{float(std::sin(phase)),float(std::sin(phase))},dry=wet;colour.tick(wet,dry,1);
+   if(i>=144000){require(std::isfinite(wet[0]),"harmonic finite");dc+=wet[0];++count;
+    for(size_t h=0;h<7;++h){const double f=frequency==74?74*(h+1):(h==0?10000:18000);const double p=juce::MathConstants<double>::twoPi*f*i/48000;re[h]+=wet[0]*std::cos(p);im[h]+=wet[0]*std::sin(p);}
+   }
+  }
+  std::array<double,7> amplitude{};for(size_t h=0;h<7;++h)amplitude[h]=2*std::hypot(re[h],im[h])/count;
+  require(std::abs(dc/count)<1.e-6,"harmonic DC removal");
+  if(frequency==74){require(std::abs(amplitude[1]-.02)<.001,"second harmonic level");require(std::abs(amplitude[2]-.005)<.001,"third harmonic level");for(size_t h=3;h<7;++h)require(amplitude[h]<1.e-4,"higher harmonics suppressed");}
+  else require(amplitude[1]/amplitude[0]<.00032,"8x alias suppression");
+ }
+}
 int main(int argc,char**argv){juce::ScopedJuceInitialiser_GUI init;try {
  if(argc>6 && juce::String(argv[1])=="--render") {FET67Processor p;set(p,"gate",juce::String(argv[4]).getFloatValue());set(p,"comp",juce::String(argv[5]).getFloatValue());set(p,"gain",juce::String(argv[6]).getFloatValue());if(argc>7)set(p,"lowCut",juce::String(argv[7]).getFloatValue());return renderAudioFile(p,juce::File(juce::String(argv[2])),juce::File(juce::String(argv[3])));}
 
+ harmonicTests();
  buttonTests();
  for(double sr:{44100.,48000.,96000.})for(int n:{1,2}) {require(render(-80,-12,-3,0,sr,n)==0,"silence");render(-80,-36,-6,.8f,sr,n);}
  const auto open=render(-80,0,-3,.001f,48000,2);const auto closed=render(-30,0,-3,.001f,48000,2);require(closed<open*.1f,"gate attenuation");
@@ -66,5 +81,5 @@ int main(int argc,char**argv){juce::ScopedJuceInitialiser_GUI init;try {
   for(int c=0;c<2;++c)for(int i=0;i<buf.getNumSamples();++i)require(std::isfinite(buf.getSample(c,i)),"stress finite");
  }
  if(argc>1){std::unique_ptr<juce::AudioProcessorEditor> e(p.createEditor());auto im=e->createComponentSnapshot(e->getLocalBounds());juce::File f(juce::String::fromUTF8(argv[1]));f.deleteFile();juce::FileOutputStream out(f);juce::PNGImageFormat png;require(png.writeImageToStream(im,out),"preview");}
- std::cout<<"PASS: FIX RMS match and silence, DELTA reconstruction and meter independence; lowcut 24 dB/oct, cutoff, stereo ratio, legacy state, unfiltered bypass;  mono/stereo at 44.1/48/96k, silence, finite, bounded, stereo link, gate, comp, bypass, state\n";return 0;
+ std::cout<<"PASS: H2/H3, higher-order rejection, DC removal, 8x alias suppression; FIX RMS match and silence, DELTA reconstruction and meter independence; lowcut 24 dB/oct, cutoff, stereo ratio, legacy state, unfiltered bypass;  mono/stereo at 44.1/48/96k, silence, finite, bounded, stereo link, gate, comp, bypass, state\n";return 0;
  }catch(const std::exception&e){std::cerr<<"FAIL: "<<e.what()<<"\n";return 1;}}

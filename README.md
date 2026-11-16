@@ -1,10 +1,22 @@
-# PAPIELGUAPO - VOCAL Compressor 2.2.0
+# PAPIELGUAPO - VOCAL Compressor 2.3.0
 
 Compresor vocal independiente VST3 y aplicación para Windows x64. Skin metálica y perillas moradas del FET, con el nombre **VOCAL Compressor** en el panel.
 
 ![VOCAL Compressor](Preview.png)
 
-[Descargar Windows x64](https://github.com/papielguapo/papielguapo-vocal-compressor/releases/tag/v2.2.0)
+[Descargar Windows x64](https://github.com/papielguapo/papielguapo-vocal-compressor/releases/tag/v2.3.0)
+
+## Coloración progresiva 2.3
+
+Sin nuevas perillas: al bajar Comp aumenta progresivamente la aportación del **segundo y tercer armónico**, combinando la posición del control con la reducción real. El nivel de la señal también influye en la coloración. Con Comp en 0 no se añade coloración intencional.
+
+La etapa usa términos cuadrático/cúbico, sobremuestreo **8×** y un Butterworth de **24 dB/oct a 20 Hz** sobre la corrección para retirar continua. La señal lineal principal no pasa por ese filtro. Se suaviza la modulación periódica de la ganancia y se reserva progresivamente hasta 3 dB de margen. No es una garantía de ausencia de clipping para cualquier señal ni un limitador true peak; FIX puede compensar ese margen al igualar RMS.
+
+**Latencia a 48 kHz: 897 muestras, 18,69 ms**, declarada al DAW y aplicada también al bypass y a Delta. Es mayor que antes y puede notarse en monitorización de grabación. No se añaden controles EVEN/ODD: la cantidad es automática.
+
+En una senoide de 74 Hz, entrada pico 0 dBFS y Comp -24: H2 ≈ -36,7 dBc, H3 ≈ -46,6 dBc; H4–H10 quedan por debajo de -86 dBc en ese caso. No se afirma exclusividad matemática para cualquier señal o sobrecarga. En una prueba concreta de dos tonos, la suma de seis bandas laterales bajó unos 6,7 dB frente a 2.2; sigue existiendo IMD.
+
+[Mediciones y condiciones completas](Validation/Harmonics-2.3/Informe.md).
 
 ## Perillas
 
@@ -33,9 +45,9 @@ La identidad interna y los IDs existentes se conservan para sesiones antiguas. L
 
 ## Validación y alcance
 
-Pruebas aprobadas: FIX iguala RMS y no genera salida en silencio; Delta + procesado reconstruyen la señal seca alineada; GR/OUT no altera el audio; Low Cut 24 dB/oct y punto de corte verificados a 44,1/48/96 kHz; relación estéreo asimétrica, estado, compatibilidad antigua, bypass y buffers grandes. Con Low Cut, FIX y Delta apagados, la salida coincide muestra por muestra con el motor 2.0 en la señal de integración.
+Pruebas aprobadas: FIX iguala RMS y no genera salida en silencio; Delta + procesado reconstruyen la señal seca alineada; GR/OUT no altera el audio; Low Cut 24 dB/oct y punto de corte verificados a 44,1/48/96 kHz; relación estéreo asimétrica, estado, compatibilidad antigua, bypass y buffers grandes. La versión 2.3 cambia intencionadamente el suavizado de ganancia y añade coloración al usar Comp. Comp en 0 conserva el camino lineal sin coloración intencional, con la nueva latencia declarada.
 
-El motor es una aproximación independiente ajustada mediante mediciones de R-Vox. No se ha demostrado identidad 1:1. Los resultados históricos de comparación siguen disponibles en [Validation](Validation/README.md) y la [auditoría de 2.0](Validation/Auditoria-restauracion.md); activar Low Cut/FIX/Delta modifica intencionadamente la comparación. No requiere Waves ni contiene su código o recursos. No incorpora limitador brickwall ni true peak.
+El motor partió de una aproximación independiente ajustada mediante mediciones de R-Vox. La versión 2.3 prioriza suavidad y coloración propia y cambia ese comportamiento. No se ha demostrado identidad 1:1. Los resultados históricos de comparación siguen disponibles en [Validation](Validation/README.md) y la [auditoría de 2.0](Validation/Auditoria-restauracion.md); activar Low Cut/FIX/Delta modifica intencionadamente la comparación. No requiere Waves ni contiene su código o recursos. No incorpora limitador brickwall ni true peak.
 
 ## Compilar
 

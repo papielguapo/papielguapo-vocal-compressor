@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
 #include <atomic>
+#include "VocalHarmonics.h"
 class FET67Processor final : public juce::AudioProcessor {
 public:
  FET67Processor();
@@ -18,7 +19,7 @@ public:
  bool acceptsMidi() const override {return false;}
  bool producesMidi() const override {return false;}
  bool isMidiEffect() const override {return false;}
- double getTailLengthSeconds() const override {return 0;}
+ double getTailLengthSeconds() const override {return .25;}
  int getNumPrograms() override {return 1;}
  int getCurrentProgram() override {return 0;}
  void setCurrentProgram(int) override {}
@@ -33,6 +34,10 @@ public:
 private:
  void process(juce::AudioBuffer<float>&,juce::MidiBuffer&,bool);
  std::atomic<float> *gate,*comp,*output,*power,*bypass,*lowCut,*fix,*delta;
+ CleanGainMemory cleanGain;
+ VocalHarmonics harmonics;
+ std::array<std::vector<float>,2> cleanDryDelay,cleanWetDelay;
+ int cleanPosition=0,cleanLatency=0;
  double rate=48000;
  static constexpr int maximumDelay=512;
  int delay=64;
