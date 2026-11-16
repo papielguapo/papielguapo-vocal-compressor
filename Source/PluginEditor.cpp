@@ -292,7 +292,7 @@ void FaceplateComponent::paint(juce::Graphics& g)
      if(i==0){const float x=cx-57,y=164;
       if(active){g.setGradientFill(juce::ColourGradient(colour(0xffb84dff).withAlpha(.45f),x,y,juce::Colours::transparentBlack,x+8,y,true));g.fillEllipse(x-8,y-8,16,16);}
       g.setColour(colour(0xff654e76));g.fillEllipse(x-3.5f,y-3.5f,7,7);g.setColour(colour(active?0xffd394ff:0xff80688e));g.fillEllipse(x-2.2f,y-2.2f,4.4f,4.4f);
-     }else{g.setColour(colour(active?0xffb84dff:0xff594364));g.fillEllipse(cx-5,215,10,4);}g.setColour(colour(0xff171c1f));}
+     }g.setColour(colour(0xff171c1f));}
     // Hand-drawn vector script, independent of installed fonts.
     juce::Path signature;
     signature.startNewSubPath(0,22);signature.lineTo(12,2);signature.cubicTo(25,-3,25,7,13,12);signature.lineTo(7,12);
