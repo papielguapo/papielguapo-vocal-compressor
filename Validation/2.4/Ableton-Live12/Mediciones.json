@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-16",
+  "host": "Ableton Live 12 Suite 12.4.5 Windows x64",
+  "plugin_version": "2.4.0",
+  "plugin_sha256": "22c77d67d97bcf77cafc1f5fa2ffdd3dee9cd4a11459d4e05927bdec25db27f4",
+  "sample_rate": 48000,
+  "frames": 5760000,
+  "duration_seconds": 120.0,
+  "sample_format": "float32 stereo",
+  "finite": true,
+  "peak_dbfs": -0.30000014137494,
+  "maximum_channel_difference": 0.0,
+  "reference": "same installed VST3 in JUCE test host, FIX ON, matched parameters; not Waves R-Vox",
+  "maximum_sample_difference_reference": 9.28160716284765e-06,
+  "residual_rms_dbfs": -144.896267810329,
+  "maximum_difference_when_reference_above_minus80_dbfs": 0.0,
+  "parameters": {
+    "bypass": 0.0,
+    "comp": -24.0,
+    "delta": 0.0,
+    "fix": 1.0,
+    "gain": 0.0,
+    "gate": -40.0,
+    "lowCut": 80.0,
+    "meterMode": 0.0,
+    "power": 1.0
+  },
+  "warp": false,
+  "project_has_one_vst3": true,
+  "project_audio_collected": true,
+  "audio_sha256": "82b02960834425b694883726a7b8ed5226d364d7c7fa91f61d32ecd8b4729551",
+  "device_buffers_from_log": {
+    "input_samples": 8192,
+    "output_samples": 4096
+  },
+  "observed_live_cpu_percent": [
+    10,
+    13
+  ]
+}

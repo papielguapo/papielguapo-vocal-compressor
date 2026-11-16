@@ -58,3 +58,5 @@ ctest --test-dir build -C Release --output-on-failure
 El ejecutable `PapisTests` conserva su nombre interno y ejecuta las pruebas DSP.
 
 [Validación ampliada: 45 minutos de audio simulado y exportaciones de voz de 10 minutos](Validation/2.4/Extended/Informe.md). Para ejecutar la prueba prolongada: `PapisTests.exe --soak C:/ruta/absoluta/Soak.csv`.
+
+[Prueba en Ableton Live 12.4.5](Validation/2.4/Ableton-Live12/Informe.md): reproducción de dos minutos, controles, guardado/reapertura y exportación float32; salida centrada L=R y pico -0,30 dBFS. Incluye condiciones, incidencia de accesibilidad y limitaciones.
