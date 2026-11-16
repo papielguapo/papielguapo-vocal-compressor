@@ -1,0 +1,19 @@
+PARAM 0 | Gate (dB, -80 = off) | 0 | -80.0000000
+PARAM 1 | Comp (dB) | 0.666667 | -12.0000000
+PARAM 2 | Gain (dB) | 0.916667 | -3.0000000
+PARAM 3 | Power | 1 | On
+  0 = Off
+  1 = On
+PARAM 4 | Bypass | 0 | Off
+  0 = Off
+  1 = On
+PARAM 5 | Low Cut (Hz, 0 = off) | 0 | 0.0000000
+PARAM 6 | Delta | 0 | Off
+  0 = Off
+  1 = On
+PARAM 7 | Meter Output | 0 | Off
+  0 = Off
+  1 = On
+PARAM 8 | FIX Auto Gain | 0 | Off
+  0 = Off
+  1 = On

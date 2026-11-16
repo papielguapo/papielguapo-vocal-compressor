@@ -14,7 +14,7 @@ public:
  juce::AudioProcessorParameter* getBypassParameter() const override;
  juce::AudioProcessorEditor* createEditor() override;
  bool hasEditor() const override {return true;}
- const juce::String getName() const override {return "Papis Compressor";}
+ const juce::String getName() const override {return "PAPIELGUAPO - VOCAL Compressor";}
  bool acceptsMidi() const override {return false;}
  bool producesMidi() const override {return false;}
  bool isMidiEffect() const override {return false;}
@@ -32,7 +32,7 @@ public:
  std::atomic<int> editorWidth{1634},editorHeight{252};
 private:
  void process(juce::AudioBuffer<float>&,juce::MidiBuffer&,bool);
- std::atomic<float> *gate,*comp,*output,*power,*bypass,*lowCut;
+ std::atomic<float> *gate,*comp,*output,*power,*bypass,*lowCut,*fix,*delta;
  double rate=48000;
  static constexpr int maximumDelay=512;
  int delay=64;
@@ -45,6 +45,8 @@ private:
  bool recovering=false;
  float gateEnvelope=0,previousPeak=0,fastReduction=0,slowReduction=0,overshootReduction=0,limiterGain=1;
  float gatePole=0,limiterPole=0,meterPole=0,shownReduction=0;
- juce::SmoothedValue<float> compression,gateThreshold,outputGain,wet,cutFrequency,cutMix;
+ juce::SmoothedValue<float> compression,gateThreshold,outputGain,wet,cutFrequency,cutMix,fixMix,deltaMix,matchGain;
+ double matchInput=0,matchOutput=0;
+ int matchCounter=0;
  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FET67Processor)
 };

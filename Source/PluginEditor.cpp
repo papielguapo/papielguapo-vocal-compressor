@@ -131,8 +131,8 @@ FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
     valueEntry.onReturnKey=[this]{commitValueEntry();};
     valueEntry.onEscapeKey=[this]{cancelValueEntry();};
     valueEntry.onFocusLost=[this]{cancelValueEntry();};
-    const char* switchIds[]{"power"};
-    const char* tips[]{"Power: on / off"};
+    const char* switchIds[]{"power","delta","meterMode","fix"};
+    const char* tips[]{"Power: on / off","DELTA: hear dry minus processed signal (including FIX)","GR / OUT: meter gain reduction or output peak; OUT shows dBFS","FIX: adaptive RMS auto gain, +/-24 dB; holds through silence and closed gate"};
     for(size_t i=0;i<switches.size();++i) {auto& b=switches[i];addAndMakeVisible(b);b.setName(switchIds[i]);b.setTitle(tips[i]);b.setTooltip(tips[i]);b.setClickingTogglesState(true);if(i==0)b.getProperties().set("reverse",true);switchAttachments[i]=std::make_unique<BA>(processor.apvts,switchIds[i],b);}
     startTimerHz(60);
 }
@@ -141,17 +141,20 @@ FaceplateComponent::~FaceplateComponent()
     stopTimer();valueEntry.onFocusLost=nullptr;valueEntry.onReturnKey=nullptr;valueEntry.onEscapeKey=nullptr;
     setLookAndFeel(nullptr);
 }
+void FaceplateComponent::mouseDoubleClick(const juce::MouseEvent& event)
+{
+    for(size_t i=0;i<knobs.size();++i){const int cx=knobs[i].getBounds().getCentreX();
+        if(juce::Rectangle<int>(cx-53,170,106,23).contains(event.getPosition())){beginValueEntry(i);return;}}
+}
 void FaceplateComponent::beginValueEntry(size_t index)
 {
     editingKnob=static_cast<int>(index);
     auto& knob=knobs[index];
-    const bool ratio=false;
     valueEntry.setName(knob.getName()+" value");
-    valueEntry.setTooltip(ratio?"Ratio: 4, 8, 12, 20 or ALL. Enter: apply; Escape: cancel."
-        :knob.getName()+ " (native units)"+". Enter: apply; Escape: cancel.");
+    valueEntry.setTooltip(knob.getName()+(index==0?" (Hz)":" (dB)")+". Enter: apply; Escape: cancel.");
     valueEntry.setColour(juce::TextEditor::focusedOutlineColourId,juce::Colour(0xffb84dff));
     valueEntry.setBounds(knob.getBounds().withSizeKeepingCentre(116,30));
-    valueEntry.setText(ratio?knob.getTextFromValue(knob.getValue()):juce::String(knob.getValue(),3),false);
+    valueEntry.setText(juce::String(knob.getValue(),3),false);
     valueEntry.setVisible(true);valueEntry.toFront(true);valueEntry.grabKeyboardFocus();valueEntry.selectAll();
 }
 void FaceplateComponent::cancelValueEntry()
@@ -163,6 +166,8 @@ void FaceplateComponent::commitValueEntry()
     if(editingKnob<0)return;
     const int index=editingKnob;
     auto textValue=valueEntry.getText().trim().replaceCharacter(',','.');
+    if(index==0&&textValue.endsWithIgnoreCase("Hz"))textValue=textValue.dropLastCharacters(2).trim();
+    if(index!=0&&textValue.endsWithIgnoreCase("dB"))textValue=textValue.dropLastCharacters(2).trim();
     double value=0;bool valid=false;
     if(textValue.equalsIgnoreCase("OFF") && (index==0 || index==1)) {value=index==1?-80:0;valid=true;}
     else {
@@ -189,6 +194,7 @@ void FaceplateComponent::resized()
     constexpr int centres[]{374,557,740,924};
     for(size_t i=0;i<knobs.size();++i)knobs[i].setBounds(centres[i]-38,80,76,76);
     switches[0].setBounds(204,137,50,36);
+    for(int i=1;i<4;++i)switches[size_t(i)].setBounds(1039+130*(i-1),146,50,36);
 
 }
 void FaceplateComponent::timerCallback()
@@ -205,19 +211,21 @@ void FaceplateComponent::paintMeter(juce::Graphics& g)
     g.setColour(colour(0xff73777b));g.drawRoundedRectangle(bezel.reduced(1),2,1);
     constexpr float values[]{-21,-18,-16,-14,-12,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,-0.5f,0,0.5f,1,2,3,4,6};
     const char* labels[]{"-21","-18","-16","-14","-12","-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","-.5","0",".5","1","2","3","4","CLIP"};
-    const bool out=false;
+    constexpr float outValues[]{-60,-54,-48,-42,-36,-30,-27,-24,-21,-18,-15,-12,-9,-6,-5,-4,-3,-2,-1,-.5f,0,1,0};
+    const char* outLabels[]{"-60","-54","-48","-42","-36","-30","-27","-24","-21","-18","-15","-12","-9","-6","-5","-4","-3","-2","-1","-.5","0","+1","CLIP"};
+    const bool out=processor.apvts.getRawParameterValue("meterMode")->load()>.5f;
     const bool powered=processor.apvts.getRawParameterValue("power")->load()>0.5f;
     for(int i=0;i<23;++i)
     {
         const float x=1015+static_cast<float>(i)*15.5f;
-        const bool on=powered&&(out?shownOut+18>=values[i]:i<=16&&(i==16||shownGr>=-values[i]));
+        const bool on=powered&&(out?shownOut>=outValues[i]:i<=16&&(i==16||shownGr>=-values[i]));
         if(on){g.setGradientFill(juce::ColourGradient(colour(0xffff2929).withAlpha(0.45f),x+5.5f,81,juce::Colours::transparentBlack,x+18,81,true));g.fillEllipse(x-8,67,27,28);}
         g.setColour(colour(0xff020303));g.fillRect(x-1,75.0f,13.0f,13.0f);
         g.setColour(colour(on?0xffff3030:0xff41191c));g.fillRect(x,76.0f,11.0f,11.0f);
         if(on){g.setColour(colour(0xffff8173));g.fillRect(x+1,77.0f,9.0f,2.0f);}
         g.setColour(colour(0xffdfdfe1));
-        if(i<=16)text(g,labels[i],x-3,55,17,10,8.3f);
-        text(g,labels[i],x-3,97,i==22?25.0f:17.0f,10,i==22?7.4f:8.3f);
+        if(i<=16)text(g,out?outLabels[i]:labels[i],x-3,55,17,10,8.3f);
+        text(g,out?outLabels[i]:labels[i],x-3,97,i==22?25.0f:17.0f,10,i==22?7.4f:8.3f);
     }
 }
 
@@ -253,7 +261,7 @@ void FaceplateComponent::paint(juce::Graphics& g)
     }
     for(auto point:{juce::Point<float>(165,53),{165,198},{1417,53},{1417,198}})screw(g,point.x,point.y);
     g.setColour(colour(0xff15191b));g.setFont(font("Arial Black",18,juce::Font::bold));
-    g.drawText("P A P I S",68,121,104,23,juce::Justification::centredLeft);
+    g.drawText("VOCAL",68,121,104,23,juce::Justification::centredLeft);
     g.setColour(colour(0xffc6cccf));g.fillRect(68.0f,132.0f,95.0f,1.8f);
     g.setColour(colour(0xff171c1f));g.setFont(font("Arial",10.0f,juce::Font::bold));
     g.drawText("COMPRESSOR",68,145,104,15,juce::Justification::centredLeft);
@@ -278,8 +286,13 @@ void FaceplateComponent::paint(juce::Graphics& g)
     }
     paintMeter(g);
     g.setColour(colour(0xff171c1f));
-    text(g,"TOTAL GAIN REDUCTION",1012,128,360,17,12);
-    text(g,juce::String(shownGr,1)+" dB GR     OUT "+juce::String(shownOut,1)+" dBFS",1012,153,360,17,12);
+    const bool outputMode=processor.apvts.getRawParameterValue("meterMode")->load()>.5f;
+    text(g,outputMode?"OUTPUT PEAK (dBFS)":"TOTAL GAIN REDUCTION",1012,117,360,15,11);
+    text(g,juce::String(shownGr,1)+" dB GR     OUT "+juce::String(shownOut,1)+" dBFS",1012,133,360,13,10);
+    const char* switchTitles[]{"DELTA","GR / OUT","FIX"};
+    for(int i=0;i<3;++i){const float cx=1064+130.f*i;const bool active=switches[size_t(i+1)].getToggleState();
+     text(g,switchTitles[i],cx-48,192,96,18,12);text(g,i==1?"GR":"OFF",cx-45,157,30,14,9);text(g,i==1?"OUT":"ON",cx+25,157,30,14,9);
+     g.setColour(colour(active?0xffb84dff:0xff594364));g.fillEllipse(cx-5,215,10,4);g.setColour(colour(0xff171c1f));}
     // Hand-drawn vector script, independent of installed fonts.
     juce::Path signature;
     signature.startNewSubPath(0,22);signature.lineTo(12,2);signature.cubicTo(25,-3,25,7,13,12);signature.lineTo(7,12);

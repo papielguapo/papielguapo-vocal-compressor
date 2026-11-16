@@ -1,33 +1,45 @@
-# Papis Compressor 2.1.0
+# PAPIELGUAPO - VOCAL Compressor 2.2.0
 
-Compresor independiente VST3 y aplicación para Windows x64, ajustado mediante mediciones de R-Vox. Conserva la skin metálica y las perillas moradas del FET 67.
+Compresor vocal independiente VST3 y aplicación para Windows x64. Skin metálica y perillas moradas del FET, con el nombre **VOCAL Compressor** en el panel.
 
-![Papis Compressor](Preview.png)
+![VOCAL Compressor](Preview.png)
 
-[Descargar versión 2.1](https://github.com/papielguapo/papis-compressor/releases/tag/v2.1.0)
+[Descargar Windows x64](https://github.com/papielguapo/papielguapo-vocal-compressor/releases/tag/v2.2.0)
 
-## Controles
+## Perillas
 
-- **Low Cut:** 0 (OFF) a 400 Hz, Butterworth de 24 dB/octava. Filtra el audio antes de Gate y Comp. El bypass conserva la señal seca sin filtrar.
+- **Low Cut:** 0 (OFF) a 400 Hz, Butterworth de 24 dB/octava. Filtra el audio antes de Gate y Comp.
+- **Gate:** OFF a 0 dB; expansión suave para reducir ruido entre frases.
+- **Comp:** 0 a -36 dB. Girar a la derecha aumenta compresión y compensación de nivel.
+- **Gain:** -36 a 0 dB; nivel de salida.
 
-- **Gate:** OFF a 0 dB. Expansión suave bajo el umbral para reducir ruido entre frases.
-- **Comp:** 0 a -36 dB; girar a la derecha aumenta la compresión y la compensación de volumen.
-- **Gain:** -36 a 0 dB; ajusta la salida de la curva de compresión y limitación.
-- **Power:** efecto / señal seca con compensación de latencia.
+**Doble clic en una perilla o sobre su lectura numérica** para introducir el valor. Low Cut acepta Hz; las demás, dB. Se admite coma decimal, punto decimal y el sufijo Hz/dB. Gate y Low Cut aceptan OFF. **Enter** aplica; **Escape** cancela. Los valores fuera de rango se limitan al rango de la perilla; entradas no numéricas se señalan en rojo.
 
-Doble clic para escribir un valor en dB; Gate acepta OFF. Enter aplica y Escape cancela. Recuperación automática integrada. Se han retirado Release, SC HPF, SC/Auto, Meter y FIX/LIM. El medidor muestra reducción total y pico de salida.
+## Botones bajo el medidor
+
+De izquierda a derecha: **DELTA · GR/OUT · FIX**. Power permanece a la izquierda.
+
+- **DELTA:** escucha la diferencia entre la señal seca alineada y la procesada, incluyendo Low Cut, Gain y FIX. Sirve para inspeccionar qué cambia el procesamiento; no es una escucha exclusiva de reducción del compresor. Transición de 20 ms.
+- **GR/OUT:** alterna el medidor entre reducción de ganancia y pico de salida en dBFS. Solo cambia la visualización.
+- **FIX:** Auto Gain RMS adaptativo enlazado estéreo (±24 dB). Compara la entrada seca con la salida procesada, incluido Gain, y compensa su nivel. Aprende con ventanas de energía de 400 ms y aplica compensación suavizada durante aproximadamente 1 s. Mantiene el ajuste durante silencio y con Gate cerrado. Puede necesitar varios segundos para estabilizarse y no es normalización LUFS ni limitación de picos.
+
+Power y el bypass del host conservan la señal seca original, sin Low Cut, con latencia compensada.
 
 ## Instalación
 
-Extraer el ZIP y copiar la carpeta completa `Binaries/Papis Compressor.vst3` a `C:/Program Files/Common Files/VST3/`. Volver a escanear en el DAW. La versión 2 sustituye Papis Compressor 1; el procesamiento cambia y se eliminan sus controles adicionales. FET 67 sigue siendo otro plugin.
+Extraer el ZIP y copiar la carpeta completa `Binaries/PAPIELGUAPO - VOCAL Compressor.vst3` a `C:/Program Files/Common Files/VST3/`. Retirar la copia anterior `Papis Compressor.vst3` para evitar dos archivos con la misma identidad VST3. Volver a escanear en el DAW.
 
-## Precisión
+La identidad interna y los IDs existentes se conservan para sesiones antiguas. Los nuevos botones abren apagados cuando no existen en el estado guardado. Low Cut abre en OFF en sesiones anteriores a 2.1. Los históricos 1.0/2.0/2.1 se conservan en Releases bajo el nombre anterior.
 
-Es una aproximación medida; no es un clon sonoro 1:1 demostrado. [Resultados y límites](Validation/README.md). No necesita R-Vox ni Waves instalado. No contiene recursos de Waves. La limitación forma parte de la curva; no es un techo brickwall ni true peak.
+## Validación y alcance
+
+Pruebas aprobadas: FIX iguala RMS y no genera salida en silencio; Delta + procesado reconstruyen la señal seca alineada; GR/OUT no altera el audio; Low Cut 24 dB/oct y punto de corte verificados a 44,1/48/96 kHz; relación estéreo asimétrica, estado, compatibilidad antigua, bypass y buffers grandes. Con Low Cut, FIX y Delta apagados, la salida coincide muestra por muestra con el motor 2.0 en la señal de integración.
+
+El motor es una aproximación independiente ajustada mediante mediciones de R-Vox. No se ha demostrado identidad 1:1. Los resultados históricos de comparación siguen disponibles en [Validation](Validation/README.md) y la [auditoría de 2.0](Validation/Auditoria-restauracion.md); activar Low Cut/FIX/Delta modifica intencionadamente la comparación. No requiere Waves ni contiene su código o recursos. No incorpora limitador brickwall ni true peak.
 
 ## Compilar
 
-Requiere CMake, MSVC y JUCE 9.0.5, con la licencia JUCE correspondiente.
+Requiere MSVC, CMake y JUCE 9.0.5 con la licencia correspondiente.
 
 ```
 cmake -S . -B build -G "Visual Studio 18 2026" -A x64 -DJUCE_PATH=C:/JUCE
@@ -35,14 +47,4 @@ cmake --build build --config Release --parallel 4
 ctest --test-dir build -C Release --output-on-failure
 ```
 
-`PapisTests --render entrada.wav salida.wav gate comp gain` permite renderizar audio para comparaciones; usar rutas absolutas. Sin argumentos ejecuta pruebas DSP.
-
-## Estado restaurado y auditoría
-
-Se mantiene el motor medido anterior al prompt de arquitectura. [Auditoría del estado restaurado](Validation/Auditoria-restauracion.md) y [pruebas ampliadas de frecuencia](Validation/Resultados.md). La foto superior corresponde a la interfaz de cuatro perillas de esta versión.
-
-## Novedades 2.1
-
-Low Cut aparece delante de Gate y utiliza la misma skin. Su frecuencia y activación se suavizan durante 20 ms. Los IDs anteriores y su orden se conservan; lowCut se añade al final. Las sesiones anteriores abren con Low Cut en OFF.
-
-Pruebas nuevas a 44,1/48/96 kHz: pendiente 24 dB/oct, punto de corte -3,01 dB, banda alta, relación estéreo asimétrica, bypass sin filtrar y recuperación de sesiones antiguas. Low Cut OFF coincide muestra por muestra con 2.0 en la señal sintética de integración. Las comparaciones históricas con R-Vox corresponden al motor medido; activar Low Cut modifica intencionadamente el audio. Mix, Auto Gain y Delta son propuestas y no están implementadas en 2.1.
+El ejecutable `PapisTests` conserva su nombre interno y ejecuta las pruebas DSP.

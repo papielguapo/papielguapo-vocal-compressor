@@ -29,6 +29,7 @@ public:
     explicit FaceplateComponent(FET67Processor&);
     ~FaceplateComponent() override;
     void paint(juce::Graphics&) override;
+    void mouseDoubleClick(const juce::MouseEvent&) override;
     void resized() override;
 private:
     void timerCallback() override;
@@ -41,11 +42,11 @@ private:
     std::array<ValueEntrySlider,4> knobs;
     juce::TextEditor valueEntry;
     int editingKnob = -1;
-    std::array<juce::ToggleButton,1> switches;
+    std::array<juce::ToggleButton,4> switches;
     using SA = juce::AudioProcessorValueTreeState::SliderAttachment;
     using BA = juce::AudioProcessorValueTreeState::ButtonAttachment;
     std::array<std::unique_ptr<SA>,4> knobAttachments;
-    std::array<std::unique_ptr<BA>,1> switchAttachments;
+    std::array<std::unique_ptr<BA>,4> switchAttachments;
     float shownGr = 0, shownOut = -100;
     juce::TooltipWindow tooltips { this, 500 };
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FaceplateComponent)
