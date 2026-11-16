@@ -1,0 +1,542 @@
+[
+  {
+    "comp_db": -12,
+    "burst_ms": 20.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.06133688276692534
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 20.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.04822635857541876
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 20.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.037498840505787924
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 20.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.015776888494152944
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 20.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": -0.0027328862580740763
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 50.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.17857591590628621
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 50.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.1338679536504053
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 50.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.09888388057356208
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 50.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.03330522243623496
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 50.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.0014742154117821143
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 100.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.3983801401008027
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 100.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.2837947996476752
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 100.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.2002985300014405
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 100.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.057588439058121166
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 100.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.008220894420337842
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 200.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.6650188111920627
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 200.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.462198090774619
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 200.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.3122733404773825
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 200.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.07894956338885921
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 200.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.01905245005707819
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.08404106575557024
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.009312657657677475
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.05332464074578927
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.030279954879408197
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.027123490120740546
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 1500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": 0.01834762095213577
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 1500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": 0.04948461234319809
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 1500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.044002070270226616
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 1500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.09072584700841815
+  },
+  {
+    "comp_db": -12,
+    "burst_ms": 1500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.020467863506598426
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 20.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.3942541321019175
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 20.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.33535928045013436
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 20.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.27116245765563374
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 20.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.11394373710238513
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 20.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": -0.0008072603224738319
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 50.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -0.8144978418413956
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 50.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -0.6629459612729274
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 50.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.5069834569800714
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 50.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.16756614432525374
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 50.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.017267865038745434
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 100.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -1.4099440872949456
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 100.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -1.221607163166233
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 100.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -0.8830032549369669
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 100.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.23389660104754534
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 100.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.04505469516854135
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 200.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -2.1821686921943955
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 200.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -1.8407425439540699
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 200.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -1.3130417700921238
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 200.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.248267593424175
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 200.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.09059417882330063
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": 0.2494008816527813
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": 0.37934219385874446
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": 0.09125137101412609
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.14998656373221345
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.11451839639748429
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 1500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": 0.07291245729184043
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 1500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": 0.7301960841455377
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 1500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": 0.88371287751138
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 1500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.47921407149136697
+  },
+  {
+    "comp_db": -24,
+    "burst_ms": 1500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.07966546182160877
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 20.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -1.5730561547162174
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 20.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -1.8400844053357135
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 20.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -1.6149684907792852
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 20.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.8436965478239469
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 20.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": -0.13035170913149463
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 50.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -2.042408228529989
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 50.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -2.586336268541247
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 50.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -2.217714618203731
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 50.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.9893512271020903
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 50.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": -0.10170788693557739
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 100.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -3.4106751817937986
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 100.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -3.5195890821981117
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 100.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -2.9918219909821007
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 100.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -1.1132617322254332
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 100.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": -0.05487295547400176
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 200.0,
+    "recovery_ms": 10.0,
+    "level_error_db": -5.960689730805173
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 200.0,
+    "recovery_ms": 50.0,
+    "level_error_db": -4.76918881560552
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 200.0,
+    "recovery_ms": 100.0,
+    "level_error_db": -3.598096345654898
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 200.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -1.0751533910895794
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 200.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.020078686606897586
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": 0.18224546476595266
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": 0.5571510873534773
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": 0.4139723511649079
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": -0.32776510765839273
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.09868316966283161
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 1500.0,
+    "recovery_ms": 10.0,
+    "level_error_db": 0.16736439703343559
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 1500.0,
+    "recovery_ms": 50.0,
+    "level_error_db": 1.8623536181947622
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 1500.0,
+    "recovery_ms": 100.0,
+    "level_error_db": 2.849232587112145
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 1500.0,
+    "recovery_ms": 300.0,
+    "level_error_db": 0.3817670899226127
+  },
+  {
+    "comp_db": -36,
+    "burst_ms": 1500.0,
+    "recovery_ms": 1000.0,
+    "level_error_db": 0.1438321844165614
+  }
+]

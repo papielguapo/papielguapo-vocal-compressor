@@ -34,3 +34,7 @@ ctest --test-dir build -C Release --output-on-failure
 ```
 
 `PapisTests --render entrada.wav salida.wav gate comp gain` permite renderizar audio para comparaciones; usar rutas absolutas. Sin argumentos ejecuta pruebas DSP.
+
+## Estado restaurado y auditoría
+
+Se mantiene el motor medido anterior al prompt de arquitectura. [Auditoría del estado restaurado](Validation/Auditoria-restauracion.md) y [pruebas ampliadas de frecuencia](Validation/Resultados.md). La foto superior corresponde a la interfaz de tres perillas de esta versión.

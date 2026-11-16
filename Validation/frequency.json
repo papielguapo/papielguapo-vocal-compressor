@@ -1,0 +1,182 @@
+[
+  {
+    "comp_db": -12,
+    "frequency_hz": 30,
+    "level_error_db": 0.12377086244478133,
+    "null_db": -30.6643452373301
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 60,
+    "level_error_db": 0.11117795987747917,
+    "null_db": -32.940906057695365
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 110,
+    "level_error_db": 0.05122348652712108,
+    "null_db": -40.00292300131385
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 200,
+    "level_error_db": 0.006676465275497531,
+    "null_db": -57.88792853143129
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 500,
+    "level_error_db": -0.0017524494463375736,
+    "null_db": -73.09708288914636
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 1000,
+    "level_error_db": -0.009464824007144865,
+    "null_db": -59.175951789613144
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 3000,
+    "level_error_db": -0.08266963445856876,
+    "null_db": -40.43933936160946
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 5000,
+    "level_error_db": -0.28516695316610535,
+    "null_db": -29.804734347958345
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 10000,
+    "level_error_db": -0.8617108183234337,
+    "null_db": -20.479886486529235
+  },
+  {
+    "comp_db": -12,
+    "frequency_hz": 18000,
+    "level_error_db": -0.3331923909307602,
+    "null_db": -28.4847665564402
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 30,
+    "level_error_db": 0.19570659596034476,
+    "null_db": -28.916774764904982
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 60,
+    "level_error_db": 0.1035457437666207,
+    "null_db": -34.35646766801705
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 110,
+    "level_error_db": 0.03441355298105783,
+    "null_db": -43.68418343844568
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 200,
+    "level_error_db": 0.0033837112067286756,
+    "null_db": -63.25594767837317
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 500,
+    "level_error_db": -0.002563473076439716,
+    "null_db": -69.78362283449583
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 1000,
+    "level_error_db": -0.013916542278956598,
+    "null_db": -55.830272974671175
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 3000,
+    "level_error_db": -0.11892069183610687,
+    "null_db": -37.29812241044633
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 5000,
+    "level_error_db": -0.41402948795184646,
+    "null_db": -26.630645596454873
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 10000,
+    "level_error_db": -1.2337336576285693,
+    "null_db": -17.54439116386377
+  },
+  {
+    "comp_db": -24,
+    "frequency_hz": 18000,
+    "level_error_db": -0.4834046432802426,
+    "null_db": -25.326865415052993
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 30,
+    "level_error_db": 0.11863994738011968,
+    "null_db": -33.632971498293614
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 60,
+    "level_error_db": 0.05081038894438418,
+    "null_db": -40.92436195013094
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 110,
+    "level_error_db": 0.014280366121237429,
+    "null_db": -51.47787059548847
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 200,
+    "level_error_db": 0.0006445899543084267,
+    "null_db": -72.73965528165263
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 500,
+    "level_error_db": -0.0030649853863047314,
+    "null_db": -68.34817871811101
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 1000,
+    "level_error_db": -0.015540850979772588,
+    "null_db": -54.87539232364635
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 3000,
+    "level_error_db": -0.12965039315382468,
+    "null_db": -36.55273342369565
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 5000,
+    "level_error_db": -0.45302543476023693,
+    "null_db": -25.86830085429643
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 10000,
+    "level_error_db": -1.344598010735042,
+    "null_db": -16.850853611584945
+  },
+  {
+    "comp_db": -36,
+    "frequency_hz": 18000,
+    "level_error_db": -0.5288413905920893,
+    "null_db": -24.56903630330004
+  }
+]
