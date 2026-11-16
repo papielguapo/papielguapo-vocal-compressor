@@ -104,11 +104,11 @@ void FET67LookAndFeel::drawToggleButton(juce::Graphics& g, juce::ToggleButton& b
 FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
 {
     setLookAndFeel(&look);
-    const char* ids[]{"gate","comp","gain"};
-    const char* names[]{"Gate","Comp","Gain"};
+    const char* ids[]{"lowCut","gate","comp","gain"};
+    const char* names[]{"Low Cut","Gate","Comp","Gain"};
     for(size_t i=0;i<knobs.size();++i)
     {
-        auto& s=knobs[i];s.inverted=i==1;addAndMakeVisible(s);s.setName(names[i]);s.setTitle(names[i]);
+        auto& s=knobs[i];s.inverted=i==2;addAndMakeVisible(s);s.setName(names[i]);s.setTitle(names[i]);
         s.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);s.setTextBoxStyle(juce::Slider::NoTextBox,false,0,0);
         s.setRotaryParameters(juce::MathConstants<float>::pi*7/6,juce::MathConstants<float>::pi*17/6,true);
         s.setPopupDisplayEnabled(true,true,this);s.setMouseDragSensitivity(180);s.setScrollWheelEnabled(true);
@@ -117,9 +117,8 @@ FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
         s.onValueEntry=[this,i]{beginValueEntry(i);};
         s.textFromValueFunction=[i](double v)
         {
-            if(i==0 && v<=-79.99) return juce::String("OFF");
-            if(i==4) return v<1 ? juce::String("OFF") : juce::String(v,0)+" Hz";
-            if(i==3) return v>=1199 ? juce::String("AUTO") : juce::String(v,0)+" ms";
+            if(i==0) return v<=0 ? juce::String("OFF") : juce::String(v,0)+" Hz";
+            if(i==1 && v<=-79.99) return juce::String("OFF");
             return juce::String(v,1)+" dB";
         };
     }
@@ -165,8 +164,7 @@ void FaceplateComponent::commitValueEntry()
     const int index=editingKnob;
     auto textValue=valueEntry.getText().trim().replaceCharacter(',','.');
     double value=0;bool valid=false;
-    if(textValue.equalsIgnoreCase("OFF") && (index==0 || index==4)) {value=index==0?-80:0;valid=true;}
-    else if(textValue.equalsIgnoreCase("AUTO") && index==3) {value=1200;valid=true;}
+    if(textValue.equalsIgnoreCase("OFF") && (index==0 || index==1)) {value=index==1?-80:0;valid=true;}
     else {
         if(textValue.startsWithChar('+')) textValue=textValue.substring(1);
         const auto raw=textValue.toStdString();
@@ -179,7 +177,7 @@ void FaceplateComponent::commitValueEntry()
         valueEntry.selectAll();return;
     }
     auto& knob=knobs[static_cast<size_t>(index)];
-    const char* ids[]{"gate","comp","gain"};
+    const char* ids[]{"lowCut","gate","comp","gain"};
     auto* parameter=processor.apvts.getParameter(ids[index]);
     parameter->beginChangeGesture();
     knob.setValue(juce::jlimit(knob.getMinimum(),knob.getMaximum(),value),juce::sendNotificationSync);
@@ -188,7 +186,7 @@ void FaceplateComponent::commitValueEntry()
 }
 void FaceplateComponent::resized()
 {
-    constexpr int centres[]{426,649,872};
+    constexpr int centres[]{374,557,740,924};
     for(size_t i=0;i<knobs.size();++i)knobs[i].setBounds(centres[i]-38,80,76,76);
     switches[0].setBounds(204,137,50,36);
 
@@ -262,12 +260,12 @@ void FaceplateComponent::paint(juce::Graphics& g)
     lamp(g,{206,32,60,60},processor.apvts.getRawParameterValue("power")->load()>0.5f);
     g.setColour(colour(0xff171c1f));text(g,"POWER",197,102,78,18,14);
     text(g,"ON",176,145,35,17,11);text(g,"OFF",258,145,35,17,11);
-    constexpr float centres[]{426,649,872};
-    const char* titles[]{"GATE","COMP","GAIN"};
-    for(int i=0;i<3;++i)
+    constexpr float centres[]{374,557,740,924};
+    const char* titles[]{"LOW CUT","GATE","COMP","GAIN"};
+    for(int i=0;i<4;++i)
     {
         const float cx=centres[i]; constexpr int steps=4;
-        const char* scales[5][5] = {{"OFF","-60","-40","-20","0"},{"0","-9","-18","-27","-36"},{"-36","-27","-18","-9","0"},{".1",".38",".65",".93","AUTO"},{"OFF","55","110","165","220"}};
+        const char* scales[4][5] = {{"OFF","100","200","300","400"},{"OFF","-60","-40","-20","0"},{"0","-9","-18","-27","-36"},{"-36","-27","-18","-9","0"}};
         for(int tick=0;tick<=steps;++tick) {
             const float a=juce::MathConstants<float>::pi*(7.0f/6.0f+(5.0f/3.0f)*tick/steps);
             const float dx=std::sin(a),dy=-std::cos(a);

@@ -38,13 +38,13 @@ private:
     void cancelValueEntry();
     FET67Processor& processor;
     FET67LookAndFeel look;
-    std::array<ValueEntrySlider,3> knobs;
+    std::array<ValueEntrySlider,4> knobs;
     juce::TextEditor valueEntry;
     int editingKnob = -1;
     std::array<juce::ToggleButton,1> switches;
     using SA = juce::AudioProcessorValueTreeState::SliderAttachment;
     using BA = juce::AudioProcessorValueTreeState::ButtonAttachment;
-    std::array<std::unique_ptr<SA>,3> knobAttachments;
+    std::array<std::unique_ptr<SA>,4> knobAttachments;
     std::array<std::unique_ptr<BA>,1> switchAttachments;
     float shownGr = 0, shownOut = -100;
     juce::TooltipWindow tooltips { this, 500 };

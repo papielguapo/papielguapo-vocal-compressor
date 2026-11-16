@@ -32,11 +32,12 @@ public:
  std::atomic<int> editorWidth{1634},editorHeight{252};
 private:
  void process(juce::AudioBuffer<float>&,juce::MidiBuffer&,bool);
- std::atomic<float> *gate,*comp,*output,*power,*bypass;
+ std::atomic<float> *gate,*comp,*output,*power,*bypass,*lowCut;
  double rate=48000;
  static constexpr int maximumDelay=512;
  int delay=64;
- std::array<std::array<float,maximumDelay+1>,2> audioDelay{};
+ std::array<std::array<float,maximumDelay+1>,2> audioDelay{},filteredDelay{};
+ std::array<std::array<float,2>,2> cutState1{},cutState2{};
  std::array<float,maximumDelay> gainHistory{},kernel{},peakHistory{};
  int audioPosition=0,gainPosition=0,overshootHold=0;
  float overloadMemory=0;
@@ -44,6 +45,6 @@ private:
  bool recovering=false;
  float gateEnvelope=0,previousPeak=0,fastReduction=0,slowReduction=0,overshootReduction=0,limiterGain=1;
  float gatePole=0,limiterPole=0,meterPole=0,shownReduction=0;
- juce::SmoothedValue<float> compression,gateThreshold,outputGain,wet;
+ juce::SmoothedValue<float> compression,gateThreshold,outputGain,wet,cutFrequency,cutMix;
  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FET67Processor)
 };

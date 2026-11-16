@@ -18,20 +18,22 @@ juce::AudioProcessorValueTreeState::ParameterLayout FET67Processor::makeParamete
  auto add=[&](const char* id,const char* name,float lo,float hi,float value){p.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{id,1},name,juce::NormalisableRange<float>(lo,hi),value));};
  add("gate","Gate (dB, -80 = off)",-80,0,-80);add("comp","Comp (dB)",-36,0,-12);add("gain","Gain (dB)",-36,0,-3);
  p.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"power",1},"Power",true));
- p.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"bypass",1},"Bypass",false));return p;
+ p.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"bypass",1},"Bypass",false));add("lowCut","Low Cut (Hz, 0 = off)",0,400,0);return p;
 }
 FET67Processor::FET67Processor():AudioProcessor(BusesProperties().withInput("Input",juce::AudioChannelSet::stereo(),true).withOutput("Output",juce::AudioChannelSet::stereo(),true)),apvts(*this,nullptr,"PapisCompressor",makeParameters()) {
- gate=apvts.getRawParameterValue("gate");comp=apvts.getRawParameterValue("comp");output=apvts.getRawParameterValue("gain");power=apvts.getRawParameterValue("power");bypass=apvts.getRawParameterValue("bypass");
+ gate=apvts.getRawParameterValue("gate");comp=apvts.getRawParameterValue("comp");output=apvts.getRawParameterValue("gain");power=apvts.getRawParameterValue("power");bypass=apvts.getRawParameterValue("bypass");lowCut=apvts.getRawParameterValue("lowCut");
 }
 bool FET67Processor::isBusesLayoutSupported(const BusesLayout& l) const {return l.inputBuses.size()==1&&l.outputBuses.size()==1&&(l.getMainInputChannelSet()==juce::AudioChannelSet::mono()||l.getMainInputChannelSet()==juce::AudioChannelSet::stereo())&&l.getMainInputChannelSet()==l.getMainOutputChannelSet();}
 void FET67Processor::prepareToPlay(double sr,int) {
  rate=std::isfinite(sr)?juce::jmax(8000.,sr):48000.;
  delay=64;while(rate>48000.0*(delay/64)&&delay<maximumDelay)delay*=2;setLatencySamples(delay);
  gatePole=std::exp(-1./(rate*.13));limiterPole=std::exp(-1./(rate*.05));meterPole=std::exp(-1./(rate*.25));
- for(auto* s:{&compression,&gateThreshold,&outputGain,&wet})s->reset(rate,.02);
+ for(auto* s:{&compression,&gateThreshold,&outputGain,&wet,&cutFrequency,&cutMix})s->reset(rate,.02);
  kernel.fill(0);float sum=0;for(int i=0;i<delay;++i){kernel[size_t(i)]=std::sin(juce::MathConstants<float>::pi*(i+.5f)/delay);sum+=kernel[size_t(i)];}for(auto& k:kernel)k/=sum;reset();
 }
 void FET67Processor::reset() {
+ for(auto& c:filteredDelay)c.fill(0);for(auto& c:cutState1)c.fill(0);for(auto& c:cutState2)c.fill(0);
+ cutFrequency.setCurrentAndTargetValue(juce::jmax(5.f,lowCut->load()));cutMix.setCurrentAndTargetValue(lowCut->load()>0?1.f:0.f);
  for(auto& channel:audioDelay)channel.fill(0);audioPosition=gainPosition=overshootHold=0;
  gateEnvelope=previousPeak=fastReduction=slowReduction=overshootReduction=shownReduction=0;limiterGain=1;
  compression.setCurrentAndTargetValue(comp->load());gateThreshold.setCurrentAndTargetValue(gate->load());outputGain.setCurrentAndTargetValue(gain(output->load()));wet.setCurrentAndTargetValue(power->load()>.5f&&bypass->load()<.5f?1.f:0.f);
@@ -53,10 +55,18 @@ void FET67Processor::process(juce::AudioBuffer<float>& b,juce::MidiBuffer& m,boo
  const float rippleWeight=interp(0),rippleFast=std::exp(-1./(rate*interp(1))),rippleSlow=std::exp(-1./(rate*interp(2)));
 
  const float overloadPole=std::exp(-1./rate);
+ const float cut=lowCut->load();cutFrequency.setTargetValue(std::isfinite(cut)?juce::jlimit(5.f,400.f,cut):5.f);cutMix.setTargetValue(std::isfinite(cut)&&cut>0?1.f:0.f);
  float outPeak=0;
  for(int i=0;i<b.getNumSamples();++i) {
   std::array<float,2> in{};float peak=0;
   for(int c=0;c<n;++c){float x=b.getSample(c,i);in[size_t(c)]=std::isfinite(x)?juce::jlimit(-64.f,64.f,x):0;peak=juce::jmax(peak,std::abs(in[size_t(c)]));}
+  const auto rawInput=in;const float frequency=cutFrequency.getNextValue(),cutWet=cutMix.getNextValue();
+  const float g=std::tan(juce::MathConstants<float>::pi*frequency/float(rate));
+  constexpr float damping[]{1.847759065f,.765366865f};peak=0;
+  for(int c=0;c<n;++c){float x=in[size_t(c)];
+   for(int s=0;s<2;++s){const float k=damping[s],a=1/(1+g*(g+k));auto& z1=cutState1[size_t(c)][size_t(s)];auto& z2=cutState2[size_t(c)][size_t(s)];const float v1=(z1+g*(x-z2))*a,v2=z2+g*v1;z1=2*v1-z1;z2=2*v2-z2;x=x-k*v1-v2;}
+   in[size_t(c)]=rawInput[size_t(c)]+cutWet*(x-rawInput[size_t(c)]);peak=juce::jmax(peak,std::abs(in[size_t(c)]));
+  }
   overloadMemory=juce::jmax(peak,overloadMemory*overloadPole);
   const float transient=peak+.234375f*juce::jmax(0.f,peak-previousPeak);
   gateEnvelope=juce::jmax(transient,gatePole*gateEnvelope+(1-gatePole)*peak);
@@ -95,17 +105,17 @@ void FET67Processor::process(juce::AudioBuffer<float>& b,juce::MidiBuffer& m,boo
   gainHistory[size_t(gainPosition)]=gateG*compGain;
   float smoothed=0;for(int k=0;k<delay;++k)smoothed+=kernel[size_t(k)]*gainHistory[size_t((gainPosition-k+delay)%delay)];gainPosition=(gainPosition+1)%delay;
   std::array<float,2> dry{};const int read=(audioPosition+1)%(delay+1);float processedPeak=0;
-  for(int c=0;c<n;++c){audioDelay[size_t(c)][size_t(audioPosition)]=in[size_t(c)];dry[size_t(c)]=audioDelay[size_t(c)][size_t(read)];processedPeak=juce::jmax(processedPeak,std::abs(dry[size_t(c)]*smoothed));}audioPosition=read;
+  for(int c=0;c<n;++c){audioDelay[size_t(c)][size_t(audioPosition)]=rawInput[size_t(c)];filteredDelay[size_t(c)][size_t(audioPosition)]=in[size_t(c)];dry[size_t(c)]=audioDelay[size_t(c)][size_t(read)];processedPeak=juce::jmax(processedPeak,std::abs(dry[size_t(c)]*smoothed));}audioPosition=read;
   // Measured R-Vox limiting is part of the rational compression curve.
   // There is no additional hard ceiling at Comp = 0: supernominal input passes through.
   const float outG=outputGain.getNextValue(),mix=wet.getNextValue();
-  for(int c=0;c<n;++c){const float processed=dry[size_t(c)]*smoothed*.99f*outG;const float y=dry[size_t(c)]+mix*(processed-dry[size_t(c)]);b.setSample(c,i,y);outPeak=juce::jmax(outPeak,std::abs(y));}
+  for(int c=0;c<n;++c){const float processed=filteredDelay[size_t(c)][size_t(read)]*smoothed*.99f*outG;const float y=dry[size_t(c)]+mix*(processed-dry[size_t(c)]);b.setSample(c,i,y);outPeak=juce::jmax(outPeak,std::abs(y));}
   const float total=reduction-db(juce::jmax(1.e-10f,gateG));shownReduction=juce::jmax(total,shownReduction*meterPole);previousPeak=peak;
  }
  currentGrDb.store(shownReduction*wet.getCurrentValue(),std::memory_order_relaxed);currentOutDb.store(db(outPeak),std::memory_order_relaxed);
 }
 juce::AudioProcessorParameter* FET67Processor::getBypassParameter() const {return apvts.getParameter("bypass");}
 void FET67Processor::getStateInformation(juce::MemoryBlock& dest){auto state=apvts.copyState();state.setProperty("editorWidth",editorWidth.load(),nullptr);if(auto xml=state.createXml())copyXmlToBinary(*xml,dest);}
-void FET67Processor::setStateInformation(const void* data,int size){if(auto xml=getXmlFromBinary(data,size))if(xml->hasTagName(apvts.state.getType())){auto state=juce::ValueTree::fromXml(*xml);editorWidth.store(juce::jlimit(817,4085,int(state.getProperty("editorWidth",1634))));apvts.replaceState(state);}}
+void FET67Processor::setStateInformation(const void* data,int size){if(auto xml=getXmlFromBinary(data,size))if(xml->hasTagName(apvts.state.getType())){auto state=juce::ValueTree::fromXml(*xml);if(!state.getChildWithProperty("id","lowCut").isValid())apvts.getParameter("lowCut")->setValueNotifyingHost(0);editorWidth.store(juce::jlimit(817,4085,int(state.getProperty("editorWidth",1634))));apvts.replaceState(state);}}
 juce::AudioProcessorEditor* FET67Processor::createEditor(){return new FET67Editor(*this);}
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter(){return new FET67Processor();}

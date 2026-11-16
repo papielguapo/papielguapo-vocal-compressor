@@ -1,12 +1,14 @@
-# Papis Compressor 2.0.0
+# Papis Compressor 2.1.0
 
 Compresor independiente VST3 y aplicación para Windows x64, ajustado mediante mediciones de R-Vox. Conserva la skin metálica y las perillas moradas del FET 67.
 
 ![Papis Compressor](Preview.png)
 
-[Descargar versión 2.0](https://github.com/papielguapo/papis-compressor/releases/tag/v2.0.0)
+[Descargar versión 2.1](https://github.com/papielguapo/papis-compressor/releases/tag/v2.1.0)
 
 ## Controles
+
+- **Low Cut:** 0 (OFF) a 400 Hz, Butterworth de 24 dB/octava. Filtra el audio antes de Gate y Comp. El bypass conserva la señal seca sin filtrar.
 
 - **Gate:** OFF a 0 dB. Expansión suave bajo el umbral para reducir ruido entre frases.
 - **Comp:** 0 a -36 dB; girar a la derecha aumenta la compresión y la compensación de volumen.
@@ -37,4 +39,10 @@ ctest --test-dir build -C Release --output-on-failure
 
 ## Estado restaurado y auditoría
 
-Se mantiene el motor medido anterior al prompt de arquitectura. [Auditoría del estado restaurado](Validation/Auditoria-restauracion.md) y [pruebas ampliadas de frecuencia](Validation/Resultados.md). La foto superior corresponde a la interfaz de tres perillas de esta versión.
+Se mantiene el motor medido anterior al prompt de arquitectura. [Auditoría del estado restaurado](Validation/Auditoria-restauracion.md) y [pruebas ampliadas de frecuencia](Validation/Resultados.md). La foto superior corresponde a la interfaz de cuatro perillas de esta versión.
+
+## Novedades 2.1
+
+Low Cut aparece delante de Gate y utiliza la misma skin. Su frecuencia y activación se suavizan durante 20 ms. Los IDs anteriores y su orden se conservan; lowCut se añade al final. Las sesiones anteriores abren con Low Cut en OFF.
+
+Pruebas nuevas a 44,1/48/96 kHz: pendiente 24 dB/oct, punto de corte -3,01 dB, banda alta, relación estéreo asimétrica, bypass sin filtrar y recuperación de sesiones antiguas. Low Cut OFF coincide muestra por muestra con 2.0 en la señal sintética de integración. Las comparaciones históricas con R-Vox corresponden al motor medido; activar Low Cut modifica intencionadamente el audio. Mix, Auto Gain y Delta son propuestas y no están implementadas en 2.1.
