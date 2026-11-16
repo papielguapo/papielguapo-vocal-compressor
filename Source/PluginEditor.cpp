@@ -133,7 +133,7 @@ FaceplateComponent::FaceplateComponent(FET67Processor& p):processor(p)
     valueEntry.onFocusLost=[this]{cancelValueEntry();};
     const char* switchIds[]{"power","delta","meterMode","fix"};
     const char* tips[]{"Power: on / off","DELTA: hear dry minus processed signal (including FIX)","GR / OUT: meter gain reduction or output peak; OUT shows dBFS","FIX: adaptive RMS auto gain, +/-24 dB; holds through silence and closed gate"};
-    for(size_t i=0;i<switches.size();++i) {auto& b=switches[i];addAndMakeVisible(b);b.setName(switchIds[i]);b.setTitle(tips[i]);b.setTooltip(tips[i]);b.setClickingTogglesState(true);if(i<2)b.getProperties().set("reverse",true);switchAttachments[i]=std::make_unique<BA>(processor.apvts,switchIds[i],b);}
+    for(size_t i=0;i<switches.size();++i) {auto& b=switches[i];addAndMakeVisible(b);b.setName(switchIds[i]);b.setTitle(tips[i]);b.setTooltip(tips[i]);b.setClickingTogglesState(true);if(i<2||i==3)b.getProperties().set("reverse",true);switchAttachments[i]=std::make_unique<BA>(processor.apvts,switchIds[i],b);}
     startTimerHz(60);
 }
 FaceplateComponent::~FaceplateComponent()
@@ -288,7 +288,7 @@ void FaceplateComponent::paint(juce::Graphics& g)
     g.setColour(colour(0xff171c1f));
     const char* switchTitles[]{"DELTA","GR / OUT","FIX"};
     for(int i=0;i<3;++i){const float cx=1064+130.f*i;const bool active=switches[size_t(i+1)].getToggleState();
-     text(g,switchTitles[i],cx-48,192,96,18,12);text(g,i==0?"ON":i==1?"GR":"OFF",cx-45,157,30,14,9);text(g,i==0?"OFF":i==1?"OUT":"ON",cx+25,157,30,14,9);
+     text(g,switchTitles[i],cx-48,192,96,18,12);text(g,i==1?"GR":"ON",cx-45,157,30,14,9);text(g,i==1?"OUT":"OFF",cx+25,157,30,14,9);
      if(i==0){const float x=cx-57,y=164;
       if(active){g.setGradientFill(juce::ColourGradient(colour(0xffb84dff).withAlpha(.45f),x,y,juce::Colours::transparentBlack,x+8,y,true));g.fillEllipse(x-8,y-8,16,16);}
       g.setColour(colour(0xff654e76));g.fillEllipse(x-3.5f,y-3.5f,7,7);g.setColour(colour(active?0xffd394ff:0xff80688e));g.fillEllipse(x-2.2f,y-2.2f,4.4f,4.4f);
