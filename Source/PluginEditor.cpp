@@ -286,9 +286,6 @@ void FaceplateComponent::paint(juce::Graphics& g)
     }
     paintMeter(g);
     g.setColour(colour(0xff171c1f));
-    const bool outputMode=processor.apvts.getRawParameterValue("meterMode")->load()>.5f;
-    text(g,outputMode?"OUTPUT PEAK (dBFS)":"TOTAL GAIN REDUCTION",1012,117,360,15,11);
-    text(g,juce::String(shownGr,1)+" dB GR     OUT "+juce::String(shownOut,1)+" dBFS",1012,133,360,13,10);
     const char* switchTitles[]{"DELTA","GR / OUT","FIX"};
     for(int i=0;i<3;++i){const float cx=1064+130.f*i;const bool active=switches[size_t(i+1)].getToggleState();
      text(g,switchTitles[i],cx-48,192,96,18,12);text(g,i==1?"GR":"OFF",cx-45,157,30,14,9);text(g,i==1?"OUT":"ON",cx+25,157,30,14,9);
